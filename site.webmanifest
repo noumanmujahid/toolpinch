@@ -1,0 +1,21 @@
+{
+  "name": "ToolPinch",
+  "short_name": "ToolPinch",
+  "description": "Free online calculators, text helpers and browser-based utility tools.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f9fc",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "/assets/toolpinch-logo-96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/toolpinch-logo-320.png",
+      "sizes": "320x320",
+      "type": "image/png"
+    }
+  ]
+}
