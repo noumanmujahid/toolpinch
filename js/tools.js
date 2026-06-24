@@ -88,3 +88,152 @@ function metaDescriptionGenerator(){const topic=(document.getElementById('seedKe
 function seoContentBrief(){const seed=seedValue()||'Main keyword';const audience=(document.getElementById('audience')?.value||'readers').trim()||'readers';const brief=[`Primary keyword: ${seed}`,`Audience: ${audience}`,'',`Suggested title: ${seed}: Practical Guide for ${audience}`,'',`H1: ${seed}`,'H2: What it means','H2: Why it matters','H2: How to use it step by step','H2: Common mistakes','H2: Examples','H2: FAQs','',`Related terms: ${seed} tool, ${seed} checker, ${seed} examples, ${seed} guide, free ${seed}`,'',`FAQs:`,`What is ${seed}?`,`How do I use ${seed}?`,`Is ${seed} free?`,`What should I check before publishing?`];outputList(brief,'Use this as a starting brief, then add real examples and original details.')}
 function peopleAlsoAsk(){const seed=cleanSeed();if(!seed)return result.innerHTML='Please enter a keyword.';const qs=[`What is ${seed}?`,`How do I use ${seed}?`,`Why is ${seed} important?`,`What is the best ${seed} tool?`,`Can I use ${seed} for free?`,`How do beginners start with ${seed}?`,`What are common ${seed} mistakes?`,`How can I improve ${seed}?`,`What should I check before using ${seed}?`,`Is ${seed} useful for SEO?`];outputList(qs,'Generated question ideas only. Add only questions that genuinely fit the page.')}
 function relatedKeywords(){const seed=cleanSeed();if(!seed)return result.innerHTML='Please enter a seed keyword.';const roots=seed.split(' ').filter(Boolean);const base=roots.length>1?roots[roots.length-1]:seed;const items=[`${seed} guide`,`${seed} tool`,`${seed} checker`,`${seed} generator`,`${seed} examples`,`${seed} template`,`${seed} tips`,`${base} research`,`${base} ideas`,`${base} questions`,`${base} content`,`${base} SEO`,`${base} writing`,`${base} planning`,`${seed} online`,`${seed} free`];outputList([...new Set(items)],'Use related ideas naturally. Do not stuff keywords into content.')}
+
+function tpDateInZone(parts,zone){
+  let stamp=Date.UTC(parts.year,parts.month-1,parts.day,parts.hour,parts.minute);
+  const formatter=new Intl.DateTimeFormat('en-CA',{timeZone:zone,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'});
+  for(let i=0;i<3;i++){
+    const current=Object.fromEntries(formatter.formatToParts(new Date(stamp)).filter(p=>p.type!=='literal').map(p=>[p.type,Number(p.value)]));
+    const shown=Date.UTC(current.year,current.month-1,current.day,current.hour,current.minute);
+    stamp+=Date.UTC(parts.year,parts.month-1,parts.day,parts.hour,parts.minute)-shown;
+  }
+  return new Date(stamp);
+}
+function worldCupTime(){
+  const raw=document.getElementById('matchDateTime').value;
+  const source=document.getElementById('sourceZone').value;
+  const target=document.getElementById('targetZone').value;
+  if(!raw)return result.innerHTML='Select a kickoff date and time.';
+  const [date,time]=raw.split('T');
+  const [year,month,day]=date.split('-').map(Number);
+  const [hour,minute]=time.split(':').map(Number);
+  const kickoff=tpDateInZone({year,month,day,hour,minute},source);
+  const format=zone=>new Intl.DateTimeFormat('en-US',{timeZone:zone,weekday:'long',year:'numeric',month:'long',day:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'}).format(kickoff);
+  result.innerHTML=`<strong>${tpEscape(format(target))}</strong><small>Converted from ${tpEscape(format(source))}. Confirm the original kickoff with the official schedule.</small>`;
+}
+function groupStandings(){
+  const names=[0,1,2,3].map(i=>(document.getElementById(`team${i}`).value||`Team ${i+1}`).trim());
+  const table=names.map((name,index)=>({name,index,p:0,w:0,d:0,l:0,gf:0,ga:0,gd:0,pts:0}));
+  for(let i=0;i<6;i++){
+    const a=document.getElementById(`m${i}a`).value;
+    const b=document.getElementById(`m${i}b`).value;
+    if(a===''||b==='')return result.innerHTML='Enter a score for all six group matches.';
+    const [ai,bi]=document.getElementById(`m${i}teams`).value.split(',').map(Number);
+    const ag=Number(a),bg=Number(b);
+    if(ag<0||bg<0)return result.innerHTML='Scores cannot be negative.';
+    const A=table[ai],B=table[bi];
+    A.p++;B.p++;A.gf+=ag;A.ga+=bg;B.gf+=bg;B.ga+=ag;
+    if(ag>bg){A.w++;A.pts+=3;B.l++}else if(bg>ag){B.w++;B.pts+=3;A.l++}else{A.d++;B.d++;A.pts++;B.pts++}
+  }
+  table.forEach(t=>t.gd=t.gf-t.ga);
+  table.sort((a,b)=>b.pts-a.pts||b.gd-a.gd||b.gf-a.gf||a.index-b.index);
+  const rows=table.map((t,i)=>`<tr><td>${i+1}</td><td>${tpEscape(t.name)}</td><td>${t.p}</td><td>${t.w}</td><td>${t.d}</td><td>${t.l}</td><td>${t.gf}</td><td>${t.ga}</td><td>${t.gd>0?'+':''}${t.gd}</td><td><strong>${t.pts}</strong></td></tr>`).join('');
+  result.innerHTML=`<div class="table-scroll"><table class="sports-table"><thead><tr><th>#</th><th>Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr></thead><tbody>${rows}</tbody></table></div><small>Sorted by points, goal difference and goals scored. Official rules may use additional tiebreakers.</small>`;
+}
+function thirdPlace(){
+  const teams=[];
+  for(let i=0;i<12;i++){
+    const pts=document.getElementById(`thirdPts${i}`).value;
+    const gd=document.getElementById(`thirdGd${i}`).value;
+    const gf=document.getElementById(`thirdGf${i}`).value;
+    if(pts===''||gd===''||gf==='')return result.innerHTML='Enter points, goal difference and goals scored for all 12 rows.';
+    teams.push({order:i,name:(document.getElementById(`thirdName${i}`).value||`Group ${String.fromCharCode(65+i)} third`).trim(),pts:Number(pts),gd:Number(gd),gf:Number(gf)});
+  }
+  teams.sort((a,b)=>b.pts-a.pts||b.gd-a.gd||b.gf-a.gf||a.order-b.order);
+  const rows=teams.map((t,i)=>`<tr class="${i<8?'qualifies':''}"><td>${i+1}</td><td>${tpEscape(t.name)}</td><td>${t.pts}</td><td>${t.gd>0?'+':''}${t.gd}</td><td>${t.gf}</td><td>${i<8?'Provisional qualifier':'Outside top eight'}</td></tr>`).join('');
+  result.innerHTML=`<div class="table-scroll"><table class="sports-table"><thead><tr><th>#</th><th>Team</th><th>Pts</th><th>GD</th><th>GF</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table></div><small>This simplified scenario table does not replace official tournament tiebreakers.</small>`;
+}
+window.tpBracketRounds=[];
+function bracketPredictor(){
+  const teams=Array.from({length:32},(_,i)=>(document.getElementById(`bracketTeam${i}`).value||`Team ${i+1}`).trim());
+  window.tpBracketRounds=[teams];
+  renderBracketRound(0);
+  result.innerHTML='Round of 32 bracket created. <small>Select each winner and advance the bracket.</small>';
+}
+function renderBracketRound(roundIndex){
+  const container=document.getElementById('bracketRounds');
+  const teams=window.tpBracketRounds[roundIndex];
+  const labels=['Round of 32','Round of 16','Quarterfinals','Semifinals','Final'];
+  container.innerHTML='';
+  window.tpBracketRounds.forEach((round,idx)=>{
+    const matches=[];
+    for(let i=0;i<round.length;i+=2){
+      matches.push(`<div class="bracket-match"><select id="bracketWinner${idx}_${i/2}"><option value="${tpEscape(round[i])}">${tpEscape(round[i])}</option><option value="${tpEscape(round[i+1])}">${tpEscape(round[i+1])}</option></select></div>`);
+    }
+    container.innerHTML+=`<section class="bracket-round"><h3>${labels[idx]}</h3>${matches.join('')}${idx===window.tpBracketRounds.length-1?`<button class="btn light" type="button" onclick="advanceBracket(${idx})">${round.length===2?'Choose Champion':'Advance Winners'}</button>`:''}</section>`;
+  });
+}
+function advanceBracket(roundIndex){
+  const round=window.tpBracketRounds[roundIndex];
+  const winners=[];
+  for(let i=0;i<round.length/2;i++)winners.push(document.getElementById(`bracketWinner${roundIndex}_${i}`).value);
+  if(winners.length===1){
+    result.innerHTML=`Predicted champion: <strong>${tpEscape(winners[0])}</strong><small>Entertainment prediction only. No betting advice or official result is provided.</small>`;
+    return;
+  }
+  window.tpBracketRounds=window.tpBracketRounds.slice(0,roundIndex+1);
+  window.tpBracketRounds.push(winners);
+  renderBracketRound(roundIndex+1);
+  const summary=window.tpBracketRounds.map((r,i)=>`${['Round of 32','Round of 16','Quarterfinals','Semifinals','Final'][i]}: ${r.join(', ')}`).join('\n');
+  result.innerHTML=`<pre>${tpEscape(summary)}</pre>`;
+}
+function tpPlayerStats(prefix){
+  const apps=Number(document.getElementById(`apps${prefix}`).value);
+  const goals=Number(document.getElementById(`goals${prefix}`).value);
+  const assists=Number(document.getElementById(`assists${prefix}`).value);
+  const minutes=Number(document.getElementById(`minutes${prefix}`).value);
+  return {name:(document.getElementById(`player${prefix}`).value||`Player ${prefix}`).trim(),apps,goals,assists,minutes,gpg:apps?goals/apps:0,cpg:apps?(goals+assists)/apps:0,mpg:goals&&minutes?minutes/goals:null};
+}
+function playerComparison(){
+  const a=tpPlayerStats('A'),b=tpPlayerStats('B');
+  if(a.apps<=0||b.apps<=0)return result.innerHTML='Enter at least one appearance for both players.';
+  const row=(label,x,y)=>`<tr><td>${label}</td><td>${x}</td><td>${y}</td></tr>`;
+  result.innerHTML=`<div class="table-scroll"><table class="sports-table"><thead><tr><th>Metric</th><th>${tpEscape(a.name)}</th><th>${tpEscape(b.name)}</th></tr></thead><tbody>${row('Appearances',a.apps,b.apps)}${row('Goals',a.goals,b.goals)}${row('Assists',a.assists,b.assists)}${row('Goal contributions',a.goals+a.assists,b.goals+b.assists)}${row('Goals per game',a.gpg.toFixed(3),b.gpg.toFixed(3))}${row('Contributions per game',a.cpg.toFixed(3),b.cpg.toFixed(3))}${row('Minutes per goal',a.mpg?a.mpg.toFixed(1):'N/A',b.mpg?b.mpg.toFixed(1):'N/A')}</tbody></table></div><small>Use the same competition scope, data source and cutoff date for both players.</small>`;
+}
+function footballRate(){
+  const name=(document.getElementById('ratePlayer').value||'Player').trim();
+  const apps=Number(document.getElementById('rateApps').value);
+  const goals=Number(document.getElementById('rateGoals').value);
+  const assists=Number(document.getElementById('rateAssists').value);
+  const minutes=Number(document.getElementById('rateMinutes').value);
+  if(apps<=0)return result.innerHTML='Enter at least one appearance.';
+  result.innerHTML=`<strong>${tpEscape(name)}</strong><small>Goals per game: ${(goals/apps).toFixed(3)}<br>Assists per game: ${(assists/apps).toFixed(3)}<br>Goal contributions per game: ${((goals+assists)/apps).toFixed(3)}<br>Minutes per goal: ${goals&&minutes?(minutes/goals).toFixed(1):'Not available'}</small>`;
+}
+function lineupBuilder(){
+  const formation=document.getElementById('formation').value;
+  const players=Array.from({length:11},(_,i)=>(document.getElementById(`lineup${i}`).value||`Player ${i+1}`).trim());
+  const rowsByFormation={'4-3-3':[1,4,3,3],'4-4-2':[1,4,4,2],'4-2-3-1':[1,4,2,3,1],'3-5-2':[1,3,5,2],'3-4-3':[1,3,4,3]};
+  const labelsByFormation={
+    '4-3-3':['Goalkeeper','Defence','Midfield','Forwards'],
+    '4-4-2':['Goalkeeper','Defence','Midfield','Forwards'],
+    '4-2-3-1':['Goalkeeper','Defence','Holding midfield','Attacking midfield','Forward'],
+    '3-5-2':['Goalkeeper','Defence','Midfield','Forwards'],
+    '3-4-3':['Goalkeeper','Defence','Midfield','Forwards']
+  };
+  let cursor=0;
+  const rows=rowsByFormation[formation].map((count,index)=>{
+    const row=players.slice(cursor,cursor+count);
+    cursor+=count;
+    return {label:labelsByFormation[formation][index],players:row};
+  });
+  const pitch=document.getElementById('pitch');
+  pitch.hidden=false;
+  pitch.innerHTML=rows.map(r=>`<div class="pitch-row">${r.players.map(p=>`<span>${tpEscape(p)}</span>`).join('')}</div>`).join('');
+  result.innerHTML=`<strong>${formation} Starting XI</strong><pre>${tpEscape(rows.map(r=>`${r.label}: ${r.players.join(', ')}`).join('\n'))}</pre>`;
+}
+function playerAge(){
+  const name=(document.getElementById('agePlayer').value||'Player').trim();
+  const birthRaw=document.getElementById('playerDob').value;
+  const matchRaw=document.getElementById('matchDate').value;
+  if(!birthRaw||!matchRaw)return result.innerHTML='Select both the date of birth and comparison date.';
+  const birth=new Date(`${birthRaw}T00:00:00Z`);
+  const match=new Date(`${matchRaw}T00:00:00Z`);
+  if(match<birth)return result.innerHTML='The comparison date must be on or after the birth date.';
+  let years=match.getUTCFullYear()-birth.getUTCFullYear();
+  let months=match.getUTCMonth()-birth.getUTCMonth();
+  let days=match.getUTCDate()-birth.getUTCDate();
+  if(days<0){months--;days+=new Date(Date.UTC(match.getUTCFullYear(),match.getUTCMonth(),0)).getUTCDate()}
+  if(months<0){years--;months+=12}
+  const totalDays=Math.floor((match-birth)/86400000);
+  result.innerHTML=`<strong>${tpEscape(name)}: ${years} years, ${months} months and ${days} days</strong><small>${totalDays.toLocaleString()} total days old on ${new Intl.DateTimeFormat('en-US',{dateStyle:'long',timeZone:'UTC'}).format(match)}.</small>`;
+}
