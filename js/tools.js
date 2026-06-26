@@ -232,3 +232,20 @@ function playerAge(){
   const totalDays=Math.floor((match-birth)/86400000);
   result.innerHTML=`<strong>${tpEscape(name)}: ${years} years, ${months} months and ${days} days</strong><small>${totalDays.toLocaleString()} total days old on ${new Intl.DateTimeFormat('en-US',{dateStyle:'long',timeZone:'UTC'}).format(match)}.</small>`;
 }
+
+async function aiToolGenerate(task){
+  const input=(document.getElementById('aiInput')?.value||'').trim();
+  const tone=(document.getElementById('aiTone')?.value||'clear').trim();
+  const r=document.getElementById('result');
+  if(!input || input.length<5){r.innerHTML='Please enter a clear topic or short draft first.';return}
+  if(input.length>2500){r.innerHTML='Please keep the input under 2500 characters.';return}
+  r.innerHTML='Generating draft... <small>This may take a few seconds.</small>';
+  try{
+    const res=await fetch('/api/gemini',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({task,input,tone})});
+    const data=await res.json().catch(()=>({}));
+    if(!res.ok)throw new Error(data.error||'AI request failed.');
+    r.innerHTML='<pre>'+tpEscape(data.text||'No result returned.')+'</pre><small>Review AI output for accuracy, originality, tone and policy-sensitive claims before publishing.</small>';
+  }catch(error){
+    r.innerHTML=tpEscape(error.message||'AI request failed. Please try again later.');
+  }
+}
