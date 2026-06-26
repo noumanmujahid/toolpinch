@@ -18,8 +18,24 @@ const TASKS = {
   caption: {
     label: 'AI Social Caption Generator',
     instruction: 'Write 8 social caption options. Keep them natural, useful, and not misleading. Include a few light hashtag ideas only if relevant.'
+  },
+  'product-description': {
+    label: 'AI Product Description Generator',
+    instruction: 'Write 4 ecommerce product description drafts plus 6 bullet benefits. Do not invent certifications, discounts, reviews, guarantees, medical claims, financial claims, or details not provided by the user.'
+  },
+  'youtube-title': {
+    label: 'AI YouTube Title Generator',
+    instruction: 'Write 12 YouTube title ideas and 3 short video description drafts. Keep titles accurate, not clickbait, and matched to the video topic.'
+  },
+  paragraph: {
+    label: 'AI Paragraph Generator',
+    instruction: 'Write 3 short paragraph drafts. Keep them clear, useful, natural, and easy to edit. Do not invent facts or statistics.'
   }
 };
+
+const RATE_LIMIT = new Map();
+const WINDOW_MS = 60 * 1000;
+const MAX_REQUESTS = 8;
 
 function send(res, status, data) {
   res.statusCode = status;
@@ -32,6 +48,19 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') return send(res, 405, { error: 'Use POST.' });
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) return send(res, 500, { error: 'AI service is not configured yet.' });
+
+  const ip = String(req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'unknown').split(',')[0].trim();
+  const now = Date.now();
+  const bucket = RATE_LIMIT.get(ip) || { count: 0, reset: now + WINDOW_MS };
+  if (now > bucket.reset) {
+    bucket.count = 0;
+    bucket.reset = now + WINDOW_MS;
+  }
+  bucket.count += 1;
+  RATE_LIMIT.set(ip, bucket);
+  if (bucket.count > MAX_REQUESTS) {
+    return send(res, 429, { error: 'Too many AI requests. Please wait a minute and try again.' });
+  }
 
   let body = {};
   try {
@@ -52,7 +81,7 @@ module.exports = async function handler(req, res) {
   const prompt = [
     'You are ToolPinch, a practical writing assistant for public web tools.',
     'Follow the task exactly. Keep output concise, original, safe, and useful.',
-    'Do not produce academic cheating, plagiarism bypassing, AI detector bypassing, deception, illegal content, medical/legal/financial advice, or unsupported earning claims.',
+    'Do not produce academic cheating, plagiarism bypassing, AI detector bypassing, deception, fake reviews, illegal content, medical/legal/financial advice, or unsupported earning claims.',
     'Do not invent facts, statistics, prices, live data, quotes, sources, or private details.',
     'Return plain text only. No markdown tables.',
     '',
