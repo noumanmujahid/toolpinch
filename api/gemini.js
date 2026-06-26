@@ -34,8 +34,42 @@ const TASKS = {
 };
 
 const RATE_LIMIT = new Map();
+const SITE_LIMIT = {
+  minute: { count: 0, reset: 0 },
+  day: { count: 0, key: '' }
+};
 const WINDOW_MS = 60 * 1000;
-const MAX_REQUESTS = 8;
+const MAX_REQUESTS_PER_IP = 2;
+const MAX_SITE_REQUESTS_PER_MINUTE = parseInt(process.env.AI_MAX_REQUESTS_PER_MINUTE || '4', 10);
+const MAX_SITE_REQUESTS_PER_DAY = parseInt(process.env.AI_MAX_REQUESTS_PER_DAY || '18', 10);
+
+function currentUtcDay() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function checkSiteLimits(now) {
+  if (now > SITE_LIMIT.minute.reset) {
+    SITE_LIMIT.minute.count = 0;
+    SITE_LIMIT.minute.reset = now + WINDOW_MS;
+  }
+
+  const dayKey = currentUtcDay();
+  if (SITE_LIMIT.day.key !== dayKey) {
+    SITE_LIMIT.day.key = dayKey;
+    SITE_LIMIT.day.count = 0;
+  }
+
+  if (SITE_LIMIT.minute.count >= MAX_SITE_REQUESTS_PER_MINUTE) {
+    return 'AI is busy right now. Please wait a minute and try again.';
+  }
+  if (SITE_LIMIT.day.count >= MAX_SITE_REQUESTS_PER_DAY) {
+    return 'Daily free AI limit reached. Please try again tomorrow.';
+  }
+
+  SITE_LIMIT.minute.count += 1;
+  SITE_LIMIT.day.count += 1;
+  return '';
+}
 
 function send(res, status, data) {
   res.statusCode = status;
@@ -48,19 +82,6 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') return send(res, 405, { error: 'Use POST.' });
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) return send(res, 500, { error: 'AI service is not configured yet.' });
-
-  const ip = String(req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'unknown').split(',')[0].trim();
-  const now = Date.now();
-  const bucket = RATE_LIMIT.get(ip) || { count: 0, reset: now + WINDOW_MS };
-  if (now > bucket.reset) {
-    bucket.count = 0;
-    bucket.reset = now + WINDOW_MS;
-  }
-  bucket.count += 1;
-  RATE_LIMIT.set(ip, bucket);
-  if (bucket.count > MAX_REQUESTS) {
-    return send(res, 429, { error: 'Too many AI requests. Please wait a minute and try again.' });
-  }
 
   let body = {};
   try {
@@ -77,7 +98,23 @@ module.exports = async function handler(req, res) {
   if (input.length < 5) return send(res, 400, { error: 'Please enter a little more detail.' });
   if (input.length > 2500) return send(res, 400, { error: 'Please keep input under 2500 characters.' });
 
-  const model = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
+  const ip = String(req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'unknown').split(',')[0].trim();
+  const now = Date.now();
+  const bucket = RATE_LIMIT.get(ip) || { count: 0, reset: now + WINDOW_MS };
+  if (now > bucket.reset) {
+    bucket.count = 0;
+    bucket.reset = now + WINDOW_MS;
+  }
+  bucket.count += 1;
+  RATE_LIMIT.set(ip, bucket);
+  if (bucket.count > MAX_REQUESTS_PER_IP) {
+    return send(res, 429, { error: 'Please wait a minute before generating another AI draft.' });
+  }
+
+  const siteLimitError = checkSiteLimits(now);
+  if (siteLimitError) return send(res, 429, { error: siteLimitError });
+
+  const model = process.env.GEMINI_MODEL || 'gemini-2.5-flash-lite';
   const prompt = [
     'You are ToolPinch, a practical writing assistant for public web tools.',
     'Follow the task exactly. Keep output concise, original, safe, and useful.',
@@ -111,7 +148,10 @@ module.exports = async function handler(req, res) {
 
     const data = await gemini.json().catch(() => ({}));
     if (!gemini.ok) {
-      const message = data?.error?.message || 'AI service error. Please try again later.';
+      const rawMessage = data?.error?.message || '';
+      const message = gemini.status === 429
+        ? 'AI limit reached. Please try again later.'
+        : rawMessage || 'AI service error. Please try again later.';
       return send(res, gemini.status, { error: message });
     }
 

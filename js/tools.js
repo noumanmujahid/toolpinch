@@ -246,6 +246,7 @@ async function aiToolGenerate(task){
     if(!res.ok)throw new Error(data.error||'AI request failed.');
     r.innerHTML='<pre>'+tpEscape(data.text||'No result returned.')+'</pre><small>Review AI output for accuracy, originality, tone and policy-sensitive claims before publishing.</small>';
   }catch(error){
-    r.innerHTML=tpEscape(error.message||'AI request failed. Please try again later.');
+    const message=error.message||'AI request failed. Please try again later.';
+    r.innerHTML=tpEscape(message)+'<small>Free AI usage is limited to keep ToolPinch stable for everyone.</small>';
   }
 }
