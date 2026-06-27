@@ -78,10 +78,117 @@ function send(res, status, data) {
   res.end(JSON.stringify(data));
 }
 
+function buildPrompt(task, input, tone) {
+  return [
+    'You are ToolPinch, a practical writing assistant for public web tools.',
+    'Follow the task exactly. Keep output concise, original, safe, and useful.',
+    'Do not produce academic cheating, plagiarism bypassing, AI detector bypassing, deception, fake reviews, illegal content, medical/legal/financial advice, or unsupported earning claims.',
+    'Do not invent facts, statistics, prices, live data, quotes, sources, or private details.',
+    'Return plain text only. No markdown tables.',
+    '',
+    'Tool: ' + task.label,
+    'Tone: ' + tone,
+    'Instruction: ' + task.instruction,
+    'User input: ' + input
+  ].join('\n');
+}
+
+async function callGroq(prompt) {
+  const apiKey = process.env.GROQ_API_KEY;
+  if (!apiKey) return { ok: false, status: 0, error: 'Groq is not configured.' };
+
+  const model = process.env.GROQ_MODEL || 'llama-3.1-8b-instant';
+  const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + apiKey,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      model,
+      messages: [
+        { role: 'system', content: 'Return plain text only. Follow safety instructions exactly.' },
+        { role: 'user', content: prompt }
+      ],
+      temperature: 0.7,
+      top_p: 0.9,
+      max_tokens: 900
+    })
+  });
+
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    return {
+      ok: false,
+      status: response.status,
+      error: response.status === 429 ? 'AI limit reached. Please try again later.' : (data?.error?.message || 'Groq service error.')
+    };
+  }
+
+  const text = data?.choices?.[0]?.message?.content?.trim();
+  if (!text) return { ok: false, status: 502, error: 'AI service returned an empty result.' };
+  return { ok: true, text, provider: 'groq' };
+}
+
+async function callGemini(prompt) {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) return { ok: false, status: 0, error: 'Gemini is not configured.' };
+
+  const model = process.env.GEMINI_MODEL || 'gemini-2.5-flash-lite';
+  const url = 'https://generativelanguage.googleapis.com/v1beta/models/' + encodeURIComponent(model) + ':generateContent';
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-goog-api-key': apiKey
+    },
+    body: JSON.stringify({
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig: {
+        temperature: 0.7,
+        topP: 0.9,
+        maxOutputTokens: 900
+      }
+    })
+  });
+
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    const rawMessage = data?.error?.message || '';
+    return {
+      ok: false,
+      status: response.status,
+      error: response.status === 429 ? 'AI limit reached. Please try again later.' : rawMessage || 'Gemini service error.'
+    };
+  }
+
+  const text = data?.candidates?.[0]?.content?.parts?.map(part => part.text || '').join('\n').trim();
+  if (!text) return { ok: false, status: 502, error: 'AI service returned an empty result.' };
+  return { ok: true, text, provider: 'gemini' };
+}
+
+async function generateDraft(prompt) {
+  const provider = String(process.env.AI_PROVIDER || 'groq').toLowerCase();
+  const first = provider === 'gemini' ? callGemini : callGroq;
+  const second = provider === 'gemini' ? callGroq : callGemini;
+
+  const primary = await first(prompt);
+  if (primary.ok) return primary;
+
+  const shouldFallback = primary.status === 0 || primary.status === 429 || primary.status >= 500;
+  if (shouldFallback) {
+    const fallback = await second(prompt);
+    if (fallback.ok) return fallback;
+  }
+
+  return primary;
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') return send(res, 405, { error: 'Use POST.' });
-  const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) return send(res, 500, { error: 'AI service is not configured yet.' });
+  if (!process.env.GROQ_API_KEY && !process.env.GEMINI_API_KEY) {
+    return send(res, 500, { error: 'AI service is not configured yet.' });
+  }
 
   let body = {};
   try {
@@ -114,50 +221,11 @@ module.exports = async function handler(req, res) {
   const siteLimitError = checkSiteLimits(now);
   if (siteLimitError) return send(res, 429, { error: siteLimitError });
 
-  const model = process.env.GEMINI_MODEL || 'gemini-2.5-flash-lite';
-  const prompt = [
-    'You are ToolPinch, a practical writing assistant for public web tools.',
-    'Follow the task exactly. Keep output concise, original, safe, and useful.',
-    'Do not produce academic cheating, plagiarism bypassing, AI detector bypassing, deception, fake reviews, illegal content, medical/legal/financial advice, or unsupported earning claims.',
-    'Do not invent facts, statistics, prices, live data, quotes, sources, or private details.',
-    'Return plain text only. No markdown tables.',
-    '',
-    'Tool: ' + task.label,
-    'Tone: ' + tone,
-    'Instruction: ' + task.instruction,
-    'User input: ' + input
-  ].join('\n');
-
+  const prompt = buildPrompt(task, input, tone);
   try {
-    const url = 'https://generativelanguage.googleapis.com/v1beta/models/' + encodeURIComponent(model) + ':generateContent';
-    const gemini = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-goog-api-key': apiKey
-      },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: {
-          temperature: 0.7,
-          topP: 0.9,
-          maxOutputTokens: 900
-        }
-      })
-    });
-
-    const data = await gemini.json().catch(() => ({}));
-    if (!gemini.ok) {
-      const rawMessage = data?.error?.message || '';
-      const message = gemini.status === 429
-        ? 'AI limit reached. Please try again later.'
-        : rawMessage || 'AI service error. Please try again later.';
-      return send(res, gemini.status, { error: message });
-    }
-
-    const text = data?.candidates?.[0]?.content?.parts?.map(part => part.text || '').join('\n').trim();
-    if (!text) return send(res, 502, { error: 'AI service returned an empty result.' });
-    return send(res, 200, { text });
+    const result = await generateDraft(prompt);
+    if (!result.ok) return send(res, result.status || 500, { error: result.error || 'AI request failed. Please try again later.' });
+    return send(res, 200, { text: result.text, provider: result.provider });
   } catch (error) {
     return send(res, 500, { error: 'AI request failed. Please try again later.' });
   }
