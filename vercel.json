@@ -1,0 +1,52 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/tools/pdf-to-jpg",
+      "destination": "/categories/pdf",
+      "permanent": true
+    },
+    {
+      "source": "/tools/pdf-merger",
+      "destination": "/categories/pdf",
+      "permanent": true
+    },
+    {
+      "source": "/tools/pdf-splitter",
+      "destination": "/categories/pdf",
+      "permanent": true
+    },
+    {
+      "source": "/tools/pdf-rotate",
+      "destination": "/categories/pdf",
+      "permanent": true
+    },
+    {
+      "source": "/tools/redirect-checker",
+      "destination": "/categories/webmaster",
+      "permanent": true
+    },
+    {
+      "source": "/tools/http-status-code-checker",
+      "destination": "/categories/webmaster",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "api/gemini.js": {
+      "maxDuration": 20
+    }
+  }
+}
