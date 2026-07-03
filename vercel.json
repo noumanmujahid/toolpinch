@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/tools/file-size-converter.html",
+      "destination": "/tools/file-size-converter",
+      "permanent": true
+    },
+    {
       "source": "/tools/pdf-to-jpg",
       "destination": "/categories/pdf",
       "permanent": true
