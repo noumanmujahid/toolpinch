@@ -250,3 +250,61 @@ async function aiToolGenerate(task){
     r.innerHTML=tpEscape(message)+'<small>Free AI usage is limited to keep ToolPinch stable for everyone.</small>';
   }
 }
+
+
+function tpMoney(n){return Number(n).toLocaleString(undefined,{maximumFractionDigits:8})}
+function cryptoProfitCalculator(){
+  const buy=Number(document.getElementById('buyPrice').value);
+  const sell=Number(document.getElementById('sellPrice').value);
+  const amount=Number(document.getElementById('coinAmount').value);
+  const fees=Number(document.getElementById('cryptoFees').value)||0;
+  if(buy<0||sell<0||amount<=0)return result.innerHTML='Enter a valid buy price, sell price and coin amount.';
+  const cost=buy*amount+fees;
+  const proceeds=sell*amount;
+  const profit=proceeds-cost;
+  const pct=cost?profit/cost*100:0;
+  result.innerHTML=`Estimated ${profit>=0?'profit':'loss'}: <strong>${tpMoney(profit)}</strong><small>Cost: ${tpMoney(cost)} · Proceeds: ${tpMoney(proceeds)} · Change: ${pct.toFixed(2)}%. Educational estimate only, not financial advice.</small>`;
+}
+function cryptoAverageBuyPrice(){
+  let totalQty=0,totalCost=0;
+  for(let i=1;i<=3;i++){
+    const qty=Number(document.getElementById('cryptoQty'+i).value)||0;
+    const price=Number(document.getElementById('cryptoPrice'+i).value)||0;
+    if(qty<0||price<0)return result.innerHTML='Quantity and price cannot be negative.';
+    totalQty+=qty;totalCost+=qty*price;
+  }
+  if(totalQty<=0)return result.innerHTML='Enter at least one quantity and price row.';
+  result.innerHTML=`Average buy price: <strong>${tpMoney(totalCost/totalQty)}</strong><small>Total quantity: ${tpMoney(totalQty)} · Total cost: ${tpMoney(totalCost)}. Fees and tax lots are not included.</small>`;
+}
+function cryptoPercentageChange(){
+  const oldPrice=Number(document.getElementById('oldPrice').value);
+  const newPrice=Number(document.getElementById('newPrice').value);
+  if(oldPrice<=0||newPrice<0)return result.innerHTML='Enter a positive old price and a valid new price.';
+  const change=newPrice-oldPrice;
+  const pct=change/oldPrice*100;
+  result.innerHTML=`Price change: <strong>${pct.toFixed(2)}%</strong><small>${tpMoney(oldPrice)} to ${tpMoney(newPrice)} · Difference: ${tpMoney(change)}. Historical comparison only.</small>`;
+}
+function satoshiBtcConverter(){
+  const satRaw=document.getElementById('satoshiValue').value;
+  const btcRaw=document.getElementById('btcValue').value;
+  const sat=Number(satRaw);
+  const btc=Number(btcRaw);
+  if(satRaw!==''&&sat>=0){
+    result.innerHTML=`<strong>${tpMoney(sat/100000000)} BTC</strong><small>${tpMoney(sat)} satoshis. 1 BTC = 100,000,000 satoshis.</small>`;
+  }else if(btcRaw!==''&&btc>=0){
+    result.innerHTML=`<strong>${tpMoney(btc*100000000)} satoshis</strong><small>${tpMoney(btc)} BTC. 1 BTC = 100,000,000 satoshis.</small>`;
+  }else result.innerHTML='Enter either satoshis or BTC.';
+}
+function cryptoMarketCap(){
+  const price=Number(document.getElementById('tokenPrice').value);
+  const supply=Number(document.getElementById('tokenSupply').value);
+  if(price<0||supply<0||!isFinite(price)||!isFinite(supply))return result.innerHTML='Enter a valid token price and circulating supply.';
+  result.innerHTML=`Estimated market cap: <strong>${tpMoney(price*supply)}</strong><small>Formula: price x circulating supply. This does not measure safety or future performance.</small>`;
+}
+function cryptoFeeCalculator(){
+  const amount=Number(document.getElementById('tradeAmount').value);
+  const feePct=Number(document.getElementById('feePercent').value);
+  if(amount<0||feePct<0||!isFinite(amount)||!isFinite(feePct))return result.innerHTML='Enter a valid amount and fee percentage.';
+  const fee=amount*feePct/100;
+  result.innerHTML=`Estimated fee: <strong>${tpMoney(fee)}</strong><small>Remaining after fee: ${tpMoney(amount-fee)} · Fee rate: ${feePct}%. Network fees and spreads are not included.</small>`;
+}
