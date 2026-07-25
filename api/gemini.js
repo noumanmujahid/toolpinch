@@ -30,6 +30,46 @@ const TASKS = {
   paragraph: {
     label: 'AI Paragraph Generator',
     instruction: 'Write 3 short paragraph drafts. Keep them clear, useful, natural, and easy to edit. Do not invent facts or statistics.'
+  },
+  'study-quiz': {
+    label: 'AI Quiz Generator',
+    instruction: 'Create a practice quiz from the topic. Include 10 questions, a mix of difficulty levels, and a clear answer key. Keep it educational and age-appropriate. Do not help with cheating or exam misconduct.'
+  },
+  'study-flashcards': {
+    label: 'AI Flashcard Generator',
+    instruction: 'Create 15 flashcards from the topic. Use a Q: and A: format. Keep answers short, accurate, and useful for revision.'
+  },
+  'study-worksheet': {
+    label: 'AI Worksheet Generator',
+    instruction: 'Create a classroom worksheet draft with title, instructions, 12 practice questions, and an answer key. Keep it suitable for practice and review.'
+  },
+  'study-notes': {
+    label: 'AI Study Notes Generator',
+    instruction: 'Create concise study notes with key points, important terms, examples, and 5 quick revision questions. Do not invent unsupported facts.'
+  },
+  'lesson-plan': {
+    label: 'AI Lesson Plan Generator',
+    instruction: 'Create a lesson plan draft with objectives, materials, warm-up, main activity, practice activity, assessment idea, and homework suggestion. Make it adaptable.'
+  },
+  'study-mcq': {
+    label: 'AI MCQ Generator',
+    instruction: 'Create 10 multiple-choice questions with four options each, mark the correct answer, and add one short explanation. Check clarity and avoid trick wording.'
+  },
+  'revision-plan': {
+    label: 'AI Exam Revision Planner',
+    instruction: 'Create a practical revision plan with daily tasks, topic order, practice checks, and rest/review time. Do not guarantee scores or grades.'
+  },
+  'study-timetable': {
+    label: 'AI Study Timetable Generator',
+    instruction: 'Create a balanced study timetable from the subjects, available days, and daily study time. Include breaks and a short review routine.'
+  },
+  'vocabulary-builder': {
+    label: 'AI Vocabulary Builder',
+    instruction: 'Create a vocabulary list with words, simple meanings, example sentences, and short practice prompts. Keep examples age-appropriate.'
+  },
+  'public-speaking': {
+    label: 'AI Public Speaking Practice Tool',
+    instruction: 'Create a speech outline, opening hook, key points, practice questions, and delivery tips. Do not invent quotes or facts.'
   }
 };
 
@@ -82,7 +122,7 @@ function buildPrompt(task, input, tone) {
   return [
     'You are ToolPinch, a practical writing assistant for public web tools.',
     'Follow the task exactly. Keep output concise, original, safe, and useful.',
-    'Do not produce academic cheating, plagiarism bypassing, AI detector bypassing, deception, fake reviews, illegal content, medical/legal/financial advice, or unsupported earning claims.',
+    'Do not produce academic cheating, plagiarism bypassing, AI detector bypassing, deception, fake reviews, illegal content, medical/legal/financial advice, or unsupported earning claims. For education tasks, focus on practice, explanation, planning and classroom support.',
     'Do not invent facts, statistics, prices, live data, quotes, sources, or private details.',
     'Return plain text only. No markdown tables.',
     '',
