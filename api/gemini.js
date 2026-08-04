@@ -70,7 +70,40 @@ const TASKS = {
   'public-speaking': {
     label: 'AI Public Speaking Practice Tool',
     instruction: 'Create a speech outline, opening hook, key points, practice questions, and delivery tips. Do not invent quotes or facts.'
-  }
+  },
+
+  'resume-bullets': {
+    label: 'Resume Bullet Point Generator',
+    instruction: 'Create 8 honest resume bullet point drafts from the user details. Use action verbs and measurable wording only when supported by the input. Do not invent employers, numbers, certifications, skills or achievements.'
+  },
+  'cover-letter': {
+    label: 'Cover Letter Generator',
+    instruction: 'Draft a concise cover letter using only the provided role, company and experience details. Do not invent qualifications. Keep it editable and professional.'
+  },
+  'linkedin-headline': {
+    label: 'LinkedIn Headline Generator',
+    instruction: 'Create 12 LinkedIn headline options for the target role. Keep them truthful, specific and not exaggerated.'
+  },
+  'interview-questions': {
+    label: 'Interview Question Generator',
+    instruction: 'Create likely interview practice questions from the job title or job description. Include behavioral, technical and role-fit questions. Do not claim these are actual company questions.'
+  },
+  'star-answer': {
+    label: 'STAR Answer Generator',
+    instruction: 'Convert the user story into a STAR interview answer draft. Preserve facts, avoid exaggeration and add placeholders where details are missing.'
+  },
+  'resume-summary': {
+    label: 'Resume Summary Generator',
+    instruction: 'Create 5 concise resume summary options based only on the provided experience and target role. Do not invent years, credentials or results.'
+  },
+  'career-path': {
+    label: 'Career Path Finder',
+    instruction: 'Suggest practical career direction ideas from the user skills and interests. Include next skills to learn and entry points. Do not guarantee job outcomes or salaries.'
+  },
+  'recruiter-email': {
+    label: 'Recruiter Email Generator',
+    instruction: 'Draft a short recruiter outreach or follow-up email. Use placeholders for names, company and links. Keep it polite, truthful and concise.'
+  },
 };
 
 const RATE_LIMIT = new Map();
