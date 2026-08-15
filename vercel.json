@@ -71,6 +71,26 @@
       "source": "/categories/calculators",
       "destination": "/categories/security-utility",
       "permanent": false
+    },
+    {
+      "source": "/categories/webmaster",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/categories/pdf",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/categories/security-utility",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/categories/sports",
+      "destination": "/",
+      "permanent": false
     }
   ],
   "headers": [
@@ -83,10 +103,5 @@
         }
       ]
     }
-  ],
-  "functions": {
-    "api/gemini.js": {
-      "maxDuration": 20
-    }
-  }
+  ]
 }
