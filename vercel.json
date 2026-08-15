@@ -38,41 +38,6 @@
       "permanent": true
     },
     {
-      "source": "/categories/image",
-      "destination": "/",
-      "permanent": false
-    },
-    {
-      "source": "/categories/ai-study",
-      "destination": "/categories/seo-writing",
-      "permanent": false
-    },
-    {
-      "source": "/categories/crypto",
-      "destination": "/",
-      "permanent": false
-    },
-    {
-      "source": "/categories/developer",
-      "destination": "/categories/webmaster",
-      "permanent": false
-    },
-    {
-      "source": "/categories/career",
-      "destination": "/categories/seo-writing",
-      "permanent": false
-    },
-    {
-      "source": "/categories/ai-writing",
-      "destination": "/categories/seo-writing",
-      "permanent": false
-    },
-    {
-      "source": "/categories/calculators",
-      "destination": "/categories/security-utility",
-      "permanent": false
-    },
-    {
       "source": "/categories/webmaster",
       "destination": "/",
       "permanent": false
@@ -89,6 +54,41 @@
     },
     {
       "source": "/categories/sports",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/categories/career",
+      "destination": "/categories/freelance",
+      "permanent": false
+    },
+    {
+      "source": "/categories/ai-writing",
+      "destination": "/categories/freelance",
+      "permanent": false
+    },
+    {
+      "source": "/categories/ai-study",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/categories/image",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/categories/crypto",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/categories/developer",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/categories/calculators",
       "destination": "/",
       "permanent": false
     }

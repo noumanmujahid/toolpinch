@@ -30,80 +30,7 @@ const TASKS = {
   paragraph: {
     label: 'AI Paragraph Generator',
     instruction: 'Write 3 short paragraph drafts. Keep them clear, useful, natural, and easy to edit. Do not invent facts or statistics.'
-  },
-  'study-quiz': {
-    label: 'AI Quiz Generator',
-    instruction: 'Create a practice quiz from the topic. Include 10 questions, a mix of difficulty levels, and a clear answer key. Keep it educational and age-appropriate. Do not help with cheating or exam misconduct.'
-  },
-  'study-flashcards': {
-    label: 'AI Flashcard Generator',
-    instruction: 'Create 15 flashcards from the topic. Use a Q: and A: format. Keep answers short, accurate, and useful for revision.'
-  },
-  'study-worksheet': {
-    label: 'AI Worksheet Generator',
-    instruction: 'Create a classroom worksheet draft with title, instructions, 12 practice questions, and an answer key. Keep it suitable for practice and review.'
-  },
-  'study-notes': {
-    label: 'AI Study Notes Generator',
-    instruction: 'Create concise study notes with key points, important terms, examples, and 5 quick revision questions. Do not invent unsupported facts.'
-  },
-  'lesson-plan': {
-    label: 'AI Lesson Plan Generator',
-    instruction: 'Create a lesson plan draft with objectives, materials, warm-up, main activity, practice activity, assessment idea, and homework suggestion. Make it adaptable.'
-  },
-  'study-mcq': {
-    label: 'AI MCQ Generator',
-    instruction: 'Create 10 multiple-choice questions with four options each, mark the correct answer, and add one short explanation. Check clarity and avoid trick wording.'
-  },
-  'revision-plan': {
-    label: 'AI Exam Revision Planner',
-    instruction: 'Create a practical revision plan with daily tasks, topic order, practice checks, and rest/review time. Do not guarantee scores or grades.'
-  },
-  'study-timetable': {
-    label: 'AI Study Timetable Generator',
-    instruction: 'Create a balanced study timetable from the subjects, available days, and daily study time. Include breaks and a short review routine.'
-  },
-  'vocabulary-builder': {
-    label: 'AI Vocabulary Builder',
-    instruction: 'Create a vocabulary list with words, simple meanings, example sentences, and short practice prompts. Keep examples age-appropriate.'
-  },
-  'public-speaking': {
-    label: 'AI Public Speaking Practice Tool',
-    instruction: 'Create a speech outline, opening hook, key points, practice questions, and delivery tips. Do not invent quotes or facts.'
-  },
-
-  'resume-bullets': {
-    label: 'Resume Bullet Point Generator',
-    instruction: 'Create 8 honest resume bullet point drafts from the user details. Use action verbs and measurable wording only when supported by the input. Do not invent employers, numbers, certifications, skills or achievements.'
-  },
-  'cover-letter': {
-    label: 'Cover Letter Generator',
-    instruction: 'Draft a concise cover letter using only the provided role, company and experience details. Do not invent qualifications. Keep it editable and professional.'
-  },
-  'linkedin-headline': {
-    label: 'LinkedIn Headline Generator',
-    instruction: 'Create 12 LinkedIn headline options for the target role. Keep them truthful, specific and not exaggerated.'
-  },
-  'interview-questions': {
-    label: 'Interview Question Generator',
-    instruction: 'Create likely interview practice questions from the job title or job description. Include behavioral, technical and role-fit questions. Do not claim these are actual company questions.'
-  },
-  'star-answer': {
-    label: 'STAR Answer Generator',
-    instruction: 'Convert the user story into a STAR interview answer draft. Preserve facts, avoid exaggeration and add placeholders where details are missing.'
-  },
-  'resume-summary': {
-    label: 'Resume Summary Generator',
-    instruction: 'Create 5 concise resume summary options based only on the provided experience and target role. Do not invent years, credentials or results.'
-  },
-  'career-path': {
-    label: 'Career Path Finder',
-    instruction: 'Suggest practical career direction ideas from the user skills and interests. Include next skills to learn and entry points. Do not guarantee job outcomes or salaries.'
-  },
-  'recruiter-email': {
-    label: 'Recruiter Email Generator',
-    instruction: 'Draft a short recruiter outreach or follow-up email. Use placeholders for names, company and links. Keep it polite, truthful and concise.'
-  },
+  }
 };
 
 const RATE_LIMIT = new Map();
@@ -155,7 +82,7 @@ function buildPrompt(task, input, tone) {
   return [
     'You are ToolPinch, a practical writing assistant for public web tools.',
     'Follow the task exactly. Keep output concise, original, safe, and useful.',
-    'Do not produce academic cheating, plagiarism bypassing, AI detector bypassing, deception, fake reviews, illegal content, medical/legal/financial advice, or unsupported earning claims. For education tasks, focus on practice, explanation, planning and classroom support.',
+    'Do not produce academic cheating, plagiarism bypassing, AI detector bypassing, deception, fake reviews, illegal content, medical/legal/financial advice, or unsupported earning claims.',
     'Do not invent facts, statistics, prices, live data, quotes, sources, or private details.',
     'Return plain text only. No markdown tables.',
     '',
