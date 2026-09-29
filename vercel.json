@@ -3,94 +3,79 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/tools/file-size-converter.html",
-      "destination": "/tools/file-size-converter",
+      "source": "/tools/salary-clock",
+      "destination": "/calculators/salary-clock",
       "permanent": true
     },
     {
-      "source": "/tools/pdf-to-jpg",
-      "destination": "/categories/pdf",
+      "source": "/tools/payday-countdown",
+      "destination": "/calculators/payday-countdown",
       "permanent": true
     },
     {
-      "source": "/tools/pdf-merger",
-      "destination": "/categories/pdf",
+      "source": "/tools/work-hours-to-afford",
+      "destination": "/calculators/work-hours-to-afford",
       "permanent": true
     },
     {
-      "source": "/tools/pdf-splitter",
-      "destination": "/categories/pdf",
+      "source": "/tools/subscription-lifetime-cost",
+      "destination": "/calculators/subscription-lifetime-cost",
       "permanent": true
     },
     {
-      "source": "/tools/pdf-rotate",
-      "destination": "/categories/pdf",
+      "source": "/tools/commute-cost-calculator",
+      "destination": "/calculators/commute-cost-calculator",
       "permanent": true
     },
     {
-      "source": "/tools/redirect-checker",
-      "destination": "/categories/webmaster",
+      "source": "/tools/salary-allocation-calculator",
+      "destination": "/calculators/salary-allocation-calculator",
       "permanent": true
     },
     {
-      "source": "/tools/http-status-code-checker",
-      "destination": "/categories/webmaster",
+      "source": "/tools/expense-to-income-ratio",
+      "destination": "/calculators/expense-to-income-ratio",
       "permanent": true
     },
     {
-      "source": "/categories/webmaster",
-      "destination": "/",
-      "permanent": false
+      "source": "/tools/savings-rate-calculator",
+      "destination": "/calculators/savings-rate-calculator",
+      "permanent": true
     },
     {
-      "source": "/categories/pdf",
-      "destination": "/",
-      "permanent": false
+      "source": "/tools/investment-ratio-calculator",
+      "destination": "/calculators/investment-ratio-calculator",
+      "permanent": true
     },
     {
-      "source": "/categories/security-utility",
-      "destination": "/",
-      "permanent": false
+      "source": "/tools/50-30-20-budget-calculator",
+      "destination": "/calculators/50-30-20-budget-calculator",
+      "permanent": true
     },
     {
-      "source": "/categories/sports",
-      "destination": "/",
-      "permanent": false
+      "source": "/tools/workdays-left-calculator",
+      "destination": "/calculators/payday-countdown",
+      "permanent": true
     },
     {
-      "source": "/categories/career",
-      "destination": "/categories/freelance",
-      "permanent": false
+      "source": "/tools/freelance-deadline-calculator",
+      "destination": "/calculators/work-hours-to-afford",
+      "permanent": true
     },
     {
-      "source": "/categories/ai-writing",
-      "destination": "/categories/freelance",
-      "permanent": false
+      "source": "/tools/meeting-cost-clock",
+      "destination": "/calculators/salary-clock",
+      "permanent": true
     },
     {
-      "source": "/categories/ai-study",
-      "destination": "/",
-      "permanent": false
-    },
-    {
-      "source": "/categories/image",
-      "destination": "/",
-      "permanent": false
-    },
-    {
-      "source": "/categories/crypto",
-      "destination": "/",
-      "permanent": false
-    },
-    {
-      "source": "/categories/developer",
-      "destination": "/",
-      "permanent": false
+      "source": "/tools/freelancer-income-allocation",
+      "destination": "/calculators/salary-allocation-calculator",
+      "permanent": true
     },
     {
       "source": "/categories/calculators",
-      "destination": "/",
-      "permanent": false
+      "destination": "/calculators",
+      "permanent": true
     }
   ],
   "headers": [
