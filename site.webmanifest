@@ -1,11 +1,11 @@
 {
-  "name": "ToolPinch Work Hours, Pay and Time Calculators",
+  "name": "ToolPinch",
   "short_name": "ToolPinch",
-  "description": "Browser-based calculators for work hours, pay, dates and time.",
+  "description": "Free calculators for work hours, pay, dates and time.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#17243a",
+  "background_color": "#f7f9fc",
+  "theme_color": "#2563eb",
   "icons": [
     {
       "src": "/assets/icon-192.png",
