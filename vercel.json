@@ -4,7 +4,7 @@
   "redirects": [
     {
       "source": "/calculators",
-      "destination": "/#time-tools",
+      "destination": "/#time-lab",
       "permanent": true
     }
   ],
