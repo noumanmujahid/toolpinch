@@ -73,3 +73,7 @@ body{background:#fff}.mc-wrap{width:min(1120px,calc(100% - 40px))}.mc-header{pos
 @media(max-width:360px){.mc-card-grid,.tool-category .mc-card-grid{grid-template-columns:1fr}.mc-calc-keys{grid-template-columns:repeat(4,1fr)}}
 
 .mc-schedule{margin-top:12px;color:#fff}.mc-schedule summary{cursor:pointer;font-weight:800}.mc-table-scroll{overflow:auto;margin-top:8px}.mc-schedule table{width:100%;min-width:520px;border-collapse:collapse;font-size:12px}.mc-schedule th,.mc-schedule td{padding:6px 8px;border-bottom:1px solid #475467;text-align:right;font-variant-numeric:tabular-nums}.mc-schedule th:first-child,.mc-schedule td:first-child{text-align:left}.mc-schedule small{display:block;margin-top:7px;color:#d0d5dd}
+
+/* v22 brand and section rhythm */
+.mc-brand{gap:8px;font-weight:850;letter-spacing:-.2px}.mc-brand img{width:34px;height:34px;object-fit:contain}.mc-home-tools.tool-category{padding:0!important}.mc-main>.tool-category>.mc-section,.mc-main>.mc-home-tools.mc-section{padding-top:12px!important;padding-bottom:12px!important}.mc-main>.tool-category+.tool-category>.mc-section{padding-top:12px!important}.mc-tools-head{margin-bottom:7px}.mc-card-grid{align-items:stretch}
+@media(max-width:760px){.mc-brand img{width:31px;height:31px}.mc-main>.tool-category>.mc-section,.mc-main>.mc-home-tools.mc-section{padding-top:10px!important;padding-bottom:10px!important}}
