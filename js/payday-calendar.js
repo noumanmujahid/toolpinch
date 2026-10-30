@@ -98,6 +98,40 @@
     });
     html += '</div>';
     res.innerHTML = html;
+    lastRows = rows;
+  }
+
+  let lastRows = [];
+  const freqLabel = () => $('payFrequency').selectedOptions[0].textContent;
+
+  function download(name, type, text) {
+    const url = URL.createObjectURL(new Blob([text], { type }));
+    const a = document.createElement('a');
+    a.href = url; a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  function exportIcs() {
+    if (!lastRows.length) run();
+    const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
+    const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ToolPinch//Payday Calendar 2027//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH'];
+    lastRows.forEach((r, i) => {
+      const day = iso(r.p).replace(/-/g, '');
+      const next = iso(addDays(r.p, 1)).replace(/-/g, '');
+      lines.push('BEGIN:VEVENT', 'UID:payday-' + day + '-' + i + '@toolpinch.com', 'DTSTAMP:' + stamp,
+        'DTSTART;VALUE=DATE:' + day, 'DTEND;VALUE=DATE:' + next, 'SUMMARY:Payday',
+        'DESCRIPTION:' + freqLabel().replace(/[,;]/g, ' ') + ' payday. Made with toolpinch.com/tools/payday-calendar-2027', 'TRANSP:TRANSPARENT', 'END:VEVENT');
+    });
+    lines.push('END:VCALENDAR');
+    download('paydays-2027.ics', 'text/calendar', lines.join('\r\n') + '\r\n');
+  }
+
+  function exportCsv() {
+    if (!lastRows.length) run();
+    const out = ['Payday,Weekday,Scheduled date,Moved?'];
+    lastRows.forEach(r => out.push([iso(r.p), r.p.toLocaleDateString('en-US', { weekday: 'long' }), iso(r.s), iso(r.s) !== iso(r.p) ? 'Yes' : 'No'].join(',')));
+    download('paydays-2027.csv', 'text/csv', out.join('\n') + '\n');
   }
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -106,6 +140,9 @@
     $('payAnchor').addEventListener('change', run);
     $('payAdjust').addEventListener('change', run);
     document.querySelectorAll('[data-action="payday-2027"]').forEach(b => b.addEventListener('click', run));
+    if ($('payIcs')) $('payIcs').addEventListener('click', exportIcs);
+    if ($('payCsv')) $('payCsv').addEventListener('click', exportCsv);
+    if ($('payPrint')) $('payPrint').addEventListener('click', () => window.print());
     syncFields();
     run();
   });
