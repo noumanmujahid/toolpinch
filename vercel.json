@@ -6,6 +6,51 @@
       "source": "/calculators",
       "destination": "/work-time-tools",
       "permanent": true
+    },
+    {
+      "source": "/guides/what-is-faq-schema",
+      "destination": "/tools/structured-data-builder",
+      "permanent": true
+    },
+    {
+      "source": "/guides/how-to-write-meta-descriptions",
+      "destination": "/tools/meta-description-generator",
+      "permanent": true
+    },
+    {
+      "source": "/guides/how-to-create-a-robots-txt-file",
+      "destination": "/tools/robots-txt-tester",
+      "permanent": true
+    },
+    {
+      "source": "/tools/ai-meta-description-generator",
+      "destination": "/tools/meta-description-generator",
+      "permanent": true
+    },
+    {
+      "source": "/tools/keyword-density-checker",
+      "destination": "/seo-tools",
+      "permanent": true
+    },
+    {
+      "source": "/categories/webmaster",
+      "destination": "/seo-tools",
+      "permanent": true
+    },
+    {
+      "source": "/tools/loan-calculator",
+      "destination": "/tools/loan-amortization-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/tools/emi-calculator",
+      "destination": "/tools/loan-amortization-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/tools/age-calculator",
+      "destination": "/tools/date-difference-calculator",
+      "permanent": true
     }
   ],
   "headers": [
