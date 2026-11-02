@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,follow"><title>2027 Payday Calendar widget | ToolPinch</title><link rel="canonical" href="https://www.toolpinch.com/tools/payday-calendar-2027"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/v2.css"><link rel="stylesheet" href="/css/money-clock.css?v=31"><style>
+.tp-big{font-size:1.35rem;margin:0 0 6px}.tp-big strong{font-size:2rem}
+.tp-flag{background:#fff4d6;border-left:4px solid #e0a100;padding:8px 10px;border-radius:6px;color:#4a3800}
+.tp-note{font-size:.92rem;opacity:.85}
+.tp-months{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:10px}
+.tp-month{border:1px solid rgba(0,0,0,.12);border-radius:8px;padding:8px;font-size:.88rem;display:flex;flex-direction:column;gap:2px}
+.tp-month b{display:flex;justify-content:space-between}.tp-month b span{opacity:.6}
+.tp-extra{border-color:#1a7f5a;background:rgba(26,127,90,.07)}
+.tp-table{width:100%;border-collapse:collapse;font-size:.95rem;margin:10px 0}
+.tp-table th,.tp-table td{padding:8px 10px;border-bottom:1px solid rgba(0,0,0,.12);text-align:left;vertical-align:top}
+.tp-table th{font-weight:700}.tp-table tfoot td{font-weight:700}
+.tp-scroll{overflow-x:auto}
+.tp-answer{font-size:1.1rem;border-left:4px solid #1a7f5a;padding:6px 12px;margin:12px 0}
+.mc-calculator select,.mc-calculator input{width:100%}
+.tp-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.tp-btn{border:1px solid rgba(0,0,0,.2);background:#fff;border-radius:8px;padding:8px 12px;font:inherit;font-size:.9rem;cursor:pointer;color:#16325c}
+.tp-btn:hover{background:#eef3fb}a.tp-btn{display:inline-block;text-decoration:none}
+.tp-steps{padding-left:1.2em}.tp-steps li{margin:6px 0}
+@media print{.mc-header,.mc-footer,.mc-skip-link,.mc-trust,.tp-actions,.mc-related-links,.mc-faq,.mc-calculator label,.mc-calculator .mc-button{display:none!important}
+.mc-tool-hero,.mc-result{background:#fff!important;color:#000!important}.tp-month{break-inside:avoid;color:#000}body{font-size:12px}}
+</style><style>html,body{background:transparent;margin:0}body{padding:8px}.mc-calculator{margin:0;max-width:none;box-shadow:none}.tp-embed-foot{font-size:12px;text-align:right;margin:6px 4px 0;opacity:.85}.tp-embed-foot a{color:inherit}@media(min-width:400px){.mc-shift-list{gap:6px}.mc-shift-row{display:grid;grid-template-columns:44px minmax(0,1fr) minmax(0,1fr) 78px!important;gap:6px;align-items:end;padding:8px 10px}.mc-shift-row>b{align-self:center;font-size:13px;grid-column:auto!important}.mc-shift-row .mc-field:last-child{grid-column:auto!important}.mc-shift-row label,.mc-shift-row .mc-field{margin:0}.mc-shift-row label span{font-size:11px}.mc-shift-row input{padding:6px 6px;min-width:0;font-size:14px}}</style></head><body><div class="mc-calculator"><h2>Find your 2027 paydays</h2>
+<label class="mc-field"><span>How often are you paid?</span><select id="payFrequency">
+<option value="biweekly" selected>Every two weeks (biweekly)</option><option value="weekly">Every week</option>
+<option value="semimonthly">Twice a month (15th and last day)</option><option value="semimonthly-1-15">Twice a month (1st and 15th)</option>
+<option value="monthly">Monthly (last day)</option></select></label>
+<label class="mc-field" id="anchorField"><span>Any one of your real paydays</span><input id="payAnchor" type="date" value="2027-01-01"></label>
+<label class="mc-field"><span>If payday lands on a weekend or bank holiday</span><select id="payAdjust">
+<option value="prev" selected>Pay the business day before</option><option value="next">Pay the next business day</option>
+<option value="none">Keep the scheduled date</option></select></label>
+<button class="mc-button" data-action="payday-2027">Show my paydays</button>
+<div class="mc-result" id="paydayResult" aria-live="polite">Choose your schedule to see every 2027 payday.</div>
+<div class="tp-actions"><button type="button" class="tp-btn" id="payIcs">Add to my calendar (.ics)</button>
+<button type="button" class="tp-btn" id="payCsv">Download CSV</button><button type="button" class="tp-btn" id="payPrint">Print</button></div></div><p class="tp-embed-foot">Free calculator by <a href="https://www.toolpinch.com/tools/payday-calendar-2027?utm_source=embed&amp;utm_medium=widget" target="_blank" rel="noopener">ToolPinch</a></p><script src="/js/money-clock.js"></script><script src="/js/payday-calendar.js"></script><script>(()=>{const send=()=>{try{parent.postMessage({toolpinch:"resize",h:document.documentElement.scrollHeight},"*")}catch(e){}};new ResizeObserver(send).observe(document.body);addEventListener("load",send)})();</script></body></html>
