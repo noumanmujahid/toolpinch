@@ -2,38 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.toolpinch.com/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://www.toolpinch.com/math-calculators</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/percentage-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/fraction-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/ratio-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/average-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/discount-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/tip-split-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/rounding-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/roi-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/loan-amortization-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/accounting-equation-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/scientific-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/quadratic-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/exponent-root-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/lcm-gcf-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/prime-factor-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/slope-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/hex-binary-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/arithmetic-sequence-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/gpa-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/grade-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/final-grade-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/mean-median-mode-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/standard-deviation-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/probability-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/random-number-generator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/dice-roller</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/area-perimeter-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/circle-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/right-triangle-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/volume-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/distance-midpoint-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/roof-area-calculator</loc><lastmod>2026-10-05</lastmod></url>
+  <url><loc>https://www.toolpinch.com/tools/percentage-calculator</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://www.toolpinch.com/tools/fraction-calculator</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://www.toolpinch.com/tools/ratio-calculator</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://www.toolpinch.com/tools/average-calculator</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://www.toolpinch.com/tools/discount-calculator</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://www.toolpinch.com/tools/tip-split-calculator</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://www.toolpinch.com/tools/roi-calculator</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://www.toolpinch.com/tools/loan-amortization-calculator</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://www.toolpinch.com/tools/accounting-equation-calculator</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://www.toolpinch.com/tools/scientific-calculator</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://www.toolpinch.com/tools/gpa-calculator</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://www.toolpinch.com/tools/grade-calculator</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://www.toolpinch.com/tools/final-grade-calculator</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://www.toolpinch.com/tools/mean-median-mode-calculator</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://www.toolpinch.com/tools/standard-deviation-calculator</loc><lastmod>2026-11-10</lastmod></url>
   <url><loc>https://www.toolpinch.com/work-time-tools</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://www.toolpinch.com/pay-calculators</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://www.toolpinch.com/date-time-tools</loc><lastmod>2026-10-30</lastmod></url>
@@ -49,7 +32,6 @@
   <url><loc>https://www.toolpinch.com/tools/timezone-converter</loc><lastmod>2026-10-05</lastmod></url>
   <url><loc>https://www.toolpinch.com/tools/countdown-timer</loc><lastmod>2026-10-05</lastmod></url>
   <url><loc>https://www.toolpinch.com/tools/sleep-calculator</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/life-in-weeks</loc><lastmod>2026-10-05</lastmod></url>
   <url><loc>https://www.toolpinch.com/tools/time-add-subtract</loc><lastmod>2026-10-05</lastmod></url>
   <url><loc>https://www.toolpinch.com/tools/decimal-hours-converter</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://www.toolpinch.com/tools/work-hours-calculator</loc><lastmod>2026-11-02</lastmod></url>
@@ -58,12 +40,6 @@
   <url><loc>https://www.toolpinch.com/tools/pay-period-converter</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://www.toolpinch.com/tools/break-deduction-calculator</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://www.toolpinch.com/tools/birthday-countdown</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/seo-page-audit</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/sitemap-indexing-checker</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/robots-txt-tester</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/domain-verification-helper</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/structured-data-builder</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://www.toolpinch.com/tools/search-social-preview</loc><lastmod>2026-10-05</lastmod></url>
   <url><loc>https://www.toolpinch.com/tools/meta-description-length-checker</loc><lastmod>2026-10-05</lastmod></url>
   <url><loc>https://www.toolpinch.com/tools/meta-description-generator</loc><lastmod>2026-10-05</lastmod></url>
   <url><loc>https://www.toolpinch.com/tools/serp-preview-tool</loc><lastmod>2026-10-05</lastmod></url>
