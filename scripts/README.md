@@ -21,6 +21,7 @@ Run any of them from the repository root, for example:
 | build_minwage.py | tools/minimum-wage-2027.html |
 | build_emergency.py | tools/emergency-supply-calculator.html |
 | build_ss.py | tools/social-security-payment-schedule-2027.html |
+| build_shopping.py | Black Friday deal, unit price, BNPL and price drop calculators |
 
 `tax_common.py` holds the shared page template, styles and calculator helpers.
 `expand_content.py` / `apply_expand.py` and `expand_dt.py` / `apply_dt.py` hold extra content added to math and date-time tools (the apply scripts skip pages that already have it).
