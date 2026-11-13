@@ -85,7 +85,7 @@ PERIOD_SELECT = """<label class="mc-field"><span>Show results per</span><select 
 TAX_LINKS = [('/tools/vat-calculator', 'VAT calculator (all countries)'), ('/tools/us-paycheck-calculator', 'US paycheck calculator'),
              ('/tools/uk-take-home-pay-calculator', 'UK take-home pay'), ('/tools/canada-take-home-pay-calculator', 'Canada take-home pay'),
              ('/tools/australia-take-home-pay-calculator', 'Australia take-home pay'), ('/tools/india-income-tax-calculator', 'India income tax'),
-             ('/tools/pakistan-salary-tax-calculator', 'Pakistan salary tax'), ('/tools/2027-tax-brackets', '2027 US tax brackets'), ('/tools/bonus-tax-calculator', 'Bonus tax calculator')]
+             ('/tools/pakistan-salary-tax-calculator', 'Pakistan salary tax'), ('/tools/2027-tax-brackets', '2027 US tax brackets'), ('/tools/bonus-tax-calculator', 'Bonus tax calculator'), ('/tools/tax-refund-estimator', 'Tax refund estimator')]
 
 
 def related(slug, extra=()):

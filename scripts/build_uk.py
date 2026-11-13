@@ -77,7 +77,7 @@ body = f"""
 <p class="tp-answer">The first <strong>£12,570</strong> is tax-free. In England, Wales and Northern Ireland you then pay <strong>20%</strong> up to £50,270, <strong>40%</strong> up to £125,140 and <strong>45%</strong> above.
 National Insurance is <strong>8%</strong> on earnings between £12,570 and £50,270 and <strong>2%</strong> above.
 On a £35,000 salary you pay {m(e35[0])} income tax and {m(e35[1])} National Insurance, and take home <strong>{m(35000-e35[0]-e35[1])}</strong> a year ({m((35000-e35[0]-e35[1])/12)} a month) before pension.</p>
-<p>The rates and thresholds are unchanged from 2025/26: the government has frozen them until April 2031.</p></header>
+<p>The rates and thresholds are unchanged from 2025/26: the government has frozen them until April 2031. The Autumn Budget on 28 October 2026 made no change to income tax or National Insurance on wages for 2026/27 or 2027/28.</p></header>
 
 <section><h2>UK take-home pay by salary (2026/27)</h2>
 <div class="tp-scroll"><table class="tp-table"><thead><tr><th>Salary</th><th class="n">Income tax (Eng/Wal/NI)</th><th class="n">NI</th><th class="n">Take-home (Eng/Wal/NI)</th><th class="n">Income tax (Scotland)</th><th class="n">Take-home (Scotland)</th></tr></thead><tbody>{ex_html}</tbody></table></div>
