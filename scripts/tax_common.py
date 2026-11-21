@@ -28,6 +28,9 @@ STYLE = """<style>
 .tp-seg input{width:auto!important}
 </style>"""
 
+EMBEDDABLE = {'us-paycheck-calculator', 'tax-refund-estimator', 'holiday-pay-calculator'}
+EMBED_NOTE = '<p class="tp-note">Run a blog, HR or payroll site? <a href="/embed-calculators">Add this calculator to your website for free</a>.</p>'
+
 PERIOD_JS = """const PER={year:1,month:12,biweek:26,week:52};"""
 
 
@@ -54,6 +57,7 @@ def page(slug, title, desc, h1, kicker, intro, trust, calc, body, faqs, script, 
             f'<a class="mc-back" href="{crumb[1]}">{back}</a><p class="mc-kicker">{kicker}</p><h1>{h1}</h1><p>{intro}</p>'
             '<div class="mc-trust">' + ''.join(f'<span>{t}</span>' for t in trust) + '</div></div>'
             f'{calc}</div></section><article class="mc-wrap mc-depth mc-tool-content">{body}'
+            + (EMBED_NOTE if slug in EMBEDDABLE else '') +
             '<section class="mc-faq"><h2>Frequently asked questions</h2>' + ''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in faqs)
             + f'</section></article></main>{footer}<script src="/js/money-clock.js"></script>{script}</body></html>')
     open(f'tools/{slug}.html', 'w', encoding='utf-8').write(html)

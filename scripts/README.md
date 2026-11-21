@@ -30,3 +30,4 @@ Run any of them from the repository root, for example:
 
 When a tax rate changes, edit the numbers in the matching script and run it again, rather than editing the HTML by hand; otherwise the next rebuild will overwrite the hand edit.
 | cleanup_offtopic.py | Nov 21 2026: removed 35 off-topic SEO, novelty and thin math pages and all links to them (already run; kept for the record) |
+| make_embeds.py | Builds /embed widgets for the US paycheck, tax refund and holiday pay calculators from the generated tool pages |

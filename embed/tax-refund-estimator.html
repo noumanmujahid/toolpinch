@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,follow"><title>Tax Refund Estimator widget | ToolPinch</title><link rel="canonical" href="https://www.toolpinch.com/tools/tax-refund-estimator"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/v2.css"><link rel="stylesheet" href="/css/money-clock.css?v=31"><style>
+.tp-big{font-size:1.2rem;margin:0 0 6px}.tp-big strong{font-size:2rem}
+.tp-table{width:100%;border-collapse:collapse;font-size:.9rem;margin:10px 0}
+.tp-table th,.tp-table td{padding:7px 8px;border-bottom:1px solid rgba(0,0,0,.12);text-align:left;vertical-align:top}
+.tp-table th{font-weight:700}.tp-table td.n,.tp-table th.n{text-align:right;white-space:nowrap}.tp-scroll{overflow-x:auto}
+.tp-answer{font-size:1.05rem;border-left:4px solid #1a7f5a;padding:6px 12px;margin:12px 0}
+.tp-note{font-size:.86rem;opacity:.9}
+.tp-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.tp-btn{border:1px solid rgba(0,0,0,.2);background:#fff;border-radius:8px;padding:8px 12px;font:inherit;font-size:.9rem;cursor:pointer;color:#16325c}
+.tp-btn:hover{background:#eef3fb}.mc-calculator select,.mc-calculator input{width:100%}
+.mc-calculator>p,.tp-actions,.tp-wide{grid-column:1/-1}
+.tp-res .tp-table{font-size:.88rem;margin:6px 0}.tp-res .tp-table td{padding:5px 6px}
+.tp-res tr.tot td{font-weight:700;border-top:2px solid rgba(0,0,0,.25)}
+.tp-bar{display:flex;height:12px;border-radius:6px;overflow:hidden;margin:8px 0 4px;background:#e6e9ef}
+.tp-bar i{display:block;height:100%}.tp-key{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:.8rem}.tp-key span:before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;background:var(--c)}
+.tp-filter{width:100%;max-width:360px;padding:8px 10px;border:1px solid rgba(0,0,0,.25);border-radius:8px;font:inherit;margin:6px 0}
+.tp-seg{display:flex;gap:6px;flex-wrap:wrap}.tp-seg label{display:flex;align-items:center;gap:5px;font-size:.92rem}
+.tp-seg input{width:auto!important}
+</style><style>html,body{background:transparent;margin:0}body{padding:8px}.mc-calculator{margin:0;max-width:none;box-shadow:none}.tp-embed-foot{font-size:12px;text-align:right;margin:6px 4px 0;opacity:.85}.tp-embed-foot a{color:inherit}</style></head><body><div class="mc-calculator"><h2>Your 2026 federal refund</h2>
+<label class="mc-field"><span>Filing status</span><select id="rSt"><option value="single">Single</option><option value="married">Married filing jointly</option><option value="hoh">Head of household</option></select></label>
+<label class="mc-field"><span>Wages for 2026 (W-2 box 1, $)</span><input id="rW" type="number" min="0" step="100" value="55000"></label>
+<label class="mc-field"><span>Federal tax withheld (W-2 box 2, $)</span><input id="rH" type="number" min="0" step="10" value="5500"></label>
+<label class="mc-field"><span>Other taxable income ($)</span><input id="rO" type="number" min="0" step="100" value="0"></label>
+<label class="mc-field"><span>Children under 17</span><input id="rK" type="number" min="0" max="12" step="1" value="0"></label>
+<label class="mc-field"><span>Other dependents</span><input id="rD" type="number" min="0" max="12" step="1" value="0"></label>
+<label class="mc-field"><span>People on the return aged 65+</span><input id="rS" type="number" min="0" max="2" step="1" value="0"></label>
+<label class="mc-field"><span>Qualified tips ($)</span><input id="rT" type="number" min="0" step="100" value="0"></label>
+<label class="mc-field"><span>Overtime premium pay (the "half" in time-and-a-half, $)</span><input id="rOT" type="number" min="0" step="100" value="0"></label>
+<label class="mc-field"><span>Itemized deductions, if more than standard ($)</span><input id="rI" type="number" min="0" step="100" value="0"></label>
+<button class="mc-button" data-action="refund">Estimate refund</button>
+<div class="mc-result tp-res" id="rR" aria-live="polite">Enter your W-2 details.</div></div><p class="tp-embed-foot">Free calculator by <a href="https://www.toolpinch.com/tools/tax-refund-estimator?utm_source=embed&amp;utm_medium=widget" target="_blank" rel="noopener">ToolPinch</a></p><script src="/js/money-clock.js"></script><script>(()=>{const D={"Y": {"single": [[[0, 0.1], [12400, 0.12], [50400, 0.22], [105700, 0.24], [201775, 0.32], [256225, 0.35], [640600, 0.37]], 16100], "married": [[[0, 0.1], [24800, 0.12], [100800, 0.22], [211400, 0.24], [403550, 0.32], [512450, 0.35], [768700, 0.37]], 32200], "hoh": [[[0, 0.1], [17700, 0.12], [67450, 0.22], [105700, 0.24], [201750, 0.32], [256200, 0.35], [640600, 0.37]], 24150]}, "C": {"ctc": 2200, "actc": 1700, "odc": 500, "addl_m": 1650, "addl_u": 2050}},$=id=>document.getElementById(id),v=id=>Math.max(0,+$(id).value||0);const BT=(x,b)=>{let t=0;for(let i=0;i<b.length;i++){const lo=b[i][0],hi=i+1<b.length?b[i+1][0]:Infinity;if(x>lo)t+=(Math.min(x,hi)-lo)*b[i][1]}return t};
+const f=x=>x.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
+function run(){const st=$('rSt').value,j=st==='married',w=v('rW'),wh=v('rH'),o=v('rO'),k=Math.round(v('rK')),dp=Math.round(v('rD')),s=Math.min(j?2:1,Math.round(v('rS')));
+const agi=w+o,y=D.Y[st],sd=y[1]+s*(j?D.C.addl_m:D.C.addl_u),ded=Math.max(sd,v('rI')),ph=Math.max(0,agi-(j?300000:150000))/1000*100;
+const tipd=Math.max(0,Math.min(v('rT'),25000)-ph),otd=Math.max(0,Math.min(v('rOT'),j?25000:12500)-ph),sen=Math.max(0,s*6000-.06*Math.max(0,agi-(j?150000:75000)));
+const ti=Math.max(0,agi-ded-tipd-otd-sen),tax=BT(ti,y[0]);let cr=k*D.C.ctc+dp*D.C.odc;cr=Math.max(0,cr-50*Math.ceil(Math.max(0,agi-(j?400000:200000))/1000));
+const nr=Math.min(tax,cr),left=Math.max(0,Math.min(cr,k*D.C.ctc)-nr),actc=Math.min(left,k*D.C.actc,.15*Math.max(0,w-2500)),owed=tax-nr,ref=wh+actc-owed;
+let h='<p class="tp-big">'+(ref>=0?'Estimated refund <strong>'+f(ref)+'</strong>':'Estimated amount owed <strong>'+f(-ref)+'</strong>')+'</p><div class="tp-scroll"><table class="tp-table"><tbody>'+
+'<tr><td>Adjusted gross income</td><td class="n">'+f(agi)+'</td></tr><tr><td>'+(ded>sd?'Itemized':'Standard')+' deduction</td><td class="n">−'+f(ded)+'</td></tr>'+
+(tipd?'<tr><td>No tax on tips deduction</td><td class="n">−'+f(tipd)+'</td></tr>':'')+(otd?'<tr><td>No tax on overtime deduction</td><td class="n">−'+f(otd)+'</td></tr>':'')+(sen?'<tr><td>Senior deduction</td><td class="n">−'+f(sen)+'</td></tr>':'')+
+'<tr><td>Taxable income</td><td class="n">'+f(ti)+'</td></tr><tr><td>Income tax</td><td class="n">'+f(tax)+'</td></tr>'+(nr?'<tr><td>Child and dependent credits</td><td class="n">−'+f(nr)+'</td></tr>':'')+
+'<tr><td>Tax after credits</td><td class="n">'+f(owed)+'</td></tr><tr><td>Federal tax withheld</td><td class="n">'+f(wh)+'</td></tr>'+(actc?'<tr><td>Refundable child tax credit</td><td class="n">+'+f(actc)+'</td></tr>':'')+
+'<tr class="tot"><td>'+(ref>=0?'Refund':'Amount owed')+'</td><td class="n">'+f(Math.abs(ref))+'</td></tr></tbody></table></div>';
+h+='<p class="tp-note">Estimate for the federal return only. Not included: the earned income tax credit, education and other credits, self-employment tax and state tax.</p>';$('rR').innerHTML=h}
+document.addEventListener('DOMContentLoaded',()=>{['rSt','rW','rH','rO','rK','rD','rS','rT','rOT','rI'].forEach(i=>$(i).addEventListener('input',run));document.querySelectorAll('[data-action="refund"]').forEach(b=>b.addEventListener('click',run));run()})})();</script><script>(()=>{const send=()=>{try{parent.postMessage({toolpinch:"resize",h:document.documentElement.scrollHeight},"*")}catch(e){}};new ResizeObserver(send).observe(document.body);addEventListener("load",send)})();</script></body></html>

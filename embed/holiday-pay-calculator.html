@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,follow"><title>Holiday Pay Calculator widget | ToolPinch</title><link rel="canonical" href="https://www.toolpinch.com/tools/holiday-pay-calculator"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/v2.css"><link rel="stylesheet" href="/css/money-clock.css?v=31"><style>
+.tp-big{font-size:1.2rem;margin:0 0 6px}.tp-big strong{font-size:2rem}
+.tp-table{width:100%;border-collapse:collapse;font-size:.9rem;margin:10px 0}
+.tp-table th,.tp-table td{padding:7px 8px;border-bottom:1px solid rgba(0,0,0,.12);text-align:left;vertical-align:top}
+.tp-table th{font-weight:700}.tp-table td.n,.tp-table th.n{text-align:right;white-space:nowrap}.tp-scroll{overflow-x:auto}
+.tp-answer{font-size:1.05rem;border-left:4px solid #1a7f5a;padding:6px 12px;margin:12px 0}
+.tp-note{font-size:.86rem;opacity:.9}
+.tp-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.tp-btn{border:1px solid rgba(0,0,0,.2);background:#fff;border-radius:8px;padding:8px 12px;font:inherit;font-size:.9rem;cursor:pointer;color:#16325c}
+.tp-btn:hover{background:#eef3fb}.mc-calculator select,.mc-calculator input{width:100%}
+.mc-calculator>p,.tp-actions,.tp-wide{grid-column:1/-1}
+.tp-res .tp-table{font-size:.88rem;margin:6px 0}.tp-res .tp-table td{padding:5px 6px}
+.tp-res tr.tot td{font-weight:700;border-top:2px solid rgba(0,0,0,.25)}
+.tp-bar{display:flex;height:12px;border-radius:6px;overflow:hidden;margin:8px 0 4px;background:#e6e9ef}
+.tp-bar i{display:block;height:100%}.tp-key{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:.8rem}.tp-key span:before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;background:var(--c)}
+.tp-filter{width:100%;max-width:360px;padding:8px 10px;border:1px solid rgba(0,0,0,.25);border-radius:8px;font:inherit;margin:6px 0}
+.tp-seg{display:flex;gap:6px;flex-wrap:wrap}.tp-seg label{display:flex;align-items:center;gap:5px;font-size:.92rem}
+.tp-seg input{width:auto!important}
+</style><style>html,body{background:transparent;margin:0}body{padding:8px}.mc-calculator{margin:0;max-width:none;box-shadow:none}.tp-embed-foot{font-size:12px;text-align:right;margin:6px 4px 0;opacity:.85}.tp-embed-foot a{color:inherit}</style></head><body><div class="mc-calculator"><h2>Your holiday week pay</h2>
+<label class="mc-field"><span>Hourly rate ($)</span><input id="hR" type="number" min="0" step="0.01" value="20"></label>
+<label class="mc-field"><span>Holiday pay rate</span><select id="hM"><option value="1">Regular rate (no premium)</option><option value="1.5" selected>Time and a half (1.5×)</option><option value="2">Double time (2×)</option><option value="2.5">Double time and a half (2.5×)</option></select></label>
+<label class="mc-field"><span>Hours worked on the holiday</span><input id="hH" type="number" min="0" max="24" step="0.25" value="8"></label>
+<label class="mc-field"><span>Other hours worked that week</span><input id="hO" type="number" min="0" max="120" step="0.25" value="32"></label>
+<label class="mc-field"><span>Paid holiday hours not worked</span><input id="hP" type="number" min="0" max="40" step="0.25" value="0"></label>
+<label class="mc-field"><span>Overtime policy</span><select id="hC"><option value="1">Holiday premium counts toward overtime (no pyramiding)</option><option value="0">Overtime paid on top of holiday premium</option></select></label>
+<button class="mc-button" data-action="hol">Calculate</button>
+<div class="mc-result tp-res" id="hRes" aria-live="polite">Enter your hours.</div></div><p class="tp-embed-foot">Free calculator by <a href="https://www.toolpinch.com/tools/holiday-pay-calculator?utm_source=embed&amp;utm_medium=widget" target="_blank" rel="noopener">ToolPinch</a></p><script src="/js/money-clock.js"></script><script>(()=>{const $=id=>document.getElementById(id),v=id=>Math.max(0,+$(id).value||0),f=x=>x.toLocaleString('en-US',{style:'currency',currency:'USD'});
+function run(){const r=v('hR'),mu=+$('hM').value,h=v('hH'),o=v('hO'),p=v('hP'),cr=$('hC').value==='1';
+const w=h+o,base=r*w,prem=r*(mu-1)*h,otH=Math.max(0,w-40);let ot=.5*r*otH;const credited=cr&&mu>=1.5&&ot>0?Math.min(ot,prem):0;ot-=credited;const off=r*p,tot=base+prem+ot+off;
+let t='<p class="tp-big"><strong>'+f(tot)+'</strong> gross pay for the week</p><div class="tp-scroll"><table class="tp-table"><tbody>'+
+'<tr><td>'+w+' hours worked × '+f(r)+'</td><td class="n">'+f(base)+'</td></tr>'+(prem?'<tr><td>Holiday premium ('+h+' h × '+f(r*(mu-1))+')</td><td class="n">'+f(prem)+'</td></tr>':'')+
+(otH?'<tr><td>Overtime premium ('+otH+' h over 40 × '+f(r/2)+')'+(credited?' after crediting '+f(credited)+' of holiday premium':'')+'</td><td class="n">'+f(ot)+'</td></tr>':'')+
+(off?'<tr><td>Paid holiday not worked ('+p+' h)</td><td class="n">'+f(off)+'</td></tr>':'')+'<tr class="tot"><td>Total gross pay</td><td class="n">'+f(tot)+'</td></tr></tbody></table></div>';
+t+='<p>Working the holiday adds <b>'+f(h*r*mu)+'</b> for those '+h+' hours, '+(mu>1?f(prem)+' more than at your regular rate.':'the same as a normal day.')+'</p>';
+t+='<p class="tp-note">Gross pay before taxes. Federal law does not require holiday premium pay; check your employer\'s policy or union contract.</p>';$('hRes').innerHTML=t}
+document.addEventListener('DOMContentLoaded',()=>{['hR','hM','hH','hO','hP','hC'].forEach(i=>$(i).addEventListener('input',run));document.querySelectorAll('[data-action="hol"]').forEach(b=>b.addEventListener('click',run));run()})})();</script><script>(()=>{const send=()=>{try{parent.postMessage({toolpinch:"resize",h:document.documentElement.scrollHeight},"*")}catch(e){}};new ResizeObserver(send).observe(document.body);addEventListener("load",send)})();</script></body></html>
