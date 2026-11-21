@@ -1,0 +1,47 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,follow"><title>Quarterly Estimated Tax Calculator widget | ToolPinch</title><link rel="canonical" href="https://www.toolpinch.com/tools/quarterly-estimated-tax-calculator"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/v2.css"><link rel="stylesheet" href="/css/money-clock.css?v=31"><style>
+.tp-big{font-size:1.2rem;margin:0 0 6px}.tp-big strong{font-size:2rem}
+.tp-table{width:100%;border-collapse:collapse;font-size:.9rem;margin:10px 0}
+.tp-table th,.tp-table td{padding:7px 8px;border-bottom:1px solid rgba(0,0,0,.12);text-align:left;vertical-align:top}
+.tp-table th{font-weight:700}.tp-table td.n,.tp-table th.n{text-align:right;white-space:nowrap}.tp-scroll{overflow-x:auto}
+.tp-answer{font-size:1.05rem;border-left:4px solid #1a7f5a;padding:6px 12px;margin:12px 0}
+.tp-note{font-size:.86rem;opacity:.9}
+.tp-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.tp-btn{border:1px solid rgba(0,0,0,.2);background:#fff;border-radius:8px;padding:8px 12px;font:inherit;font-size:.9rem;cursor:pointer;color:#16325c}
+.tp-btn:hover{background:#eef3fb}.mc-calculator select,.mc-calculator input{width:100%}
+.mc-calculator>p,.tp-actions,.tp-wide{grid-column:1/-1}
+.tp-res .tp-table{font-size:.88rem;margin:6px 0}.tp-res .tp-table td{padding:5px 6px}
+.tp-res tr.tot td{font-weight:700;border-top:2px solid rgba(0,0,0,.25)}
+.tp-bar{display:flex;height:12px;border-radius:6px;overflow:hidden;margin:8px 0 4px;background:#e6e9ef}
+.tp-bar i{display:block;height:100%}.tp-key{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:.8rem}.tp-key span:before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;background:var(--c)}
+.tp-filter{width:100%;max-width:360px;padding:8px 10px;border:1px solid rgba(0,0,0,.25);border-radius:8px;font:inherit;margin:6px 0}
+.tp-seg{display:flex;gap:6px;flex-wrap:wrap}.tp-seg label{display:flex;align-items:center;gap:5px;font-size:.92rem}
+.tp-seg input{width:auto!important}
+</style><style>html,body{background:transparent;margin:0}body{padding:8px}.mc-calculator{margin:0;max-width:none;box-shadow:none}.tp-embed-foot{font-size:12px;text-align:right;margin:6px 4px 0;opacity:.85}.tp-embed-foot a{color:inherit}</style></head><body><div class="mc-calculator"><h2>Your 2026 estimated tax</h2>
+<label class="mc-field"><span>Filing status</span><select id="eSt"><option value="single">Single</option><option value="married">Married filing jointly</option><option value="hoh">Head of household</option></select></label>
+<label class="mc-field"><span>Self-employment profit for 2026 ($)</span><input id="eP" type="number" min="0" step="100" value="60000"></label>
+<label class="mc-field"><span>W-2 wages for 2026 ($)</span><input id="eW" type="number" min="0" step="100" value="0"></label>
+<label class="mc-field"><span>Federal tax withheld from wages ($)</span><input id="eH" type="number" min="0" step="10" value="0"></label>
+<label class="mc-field"><span>Other taxable income ($)</span><input id="eO" type="number" min="0" step="100" value="0"></label>
+<label class="mc-field"><span>Estimated payments already made for 2026 ($)</span><input id="eA" type="number" min="0" step="10" value="0"></label>
+<label class="mc-field"><span>Children under 17</span><input id="eK" type="number" min="0" max="12" step="1" value="0"></label>
+<label class="mc-field"><span>Total tax on your 2025 return (optional, Form 1040 line 24, $)</span><input id="eY" type="number" min="0" step="10" placeholder="Leave blank if unknown"></label>
+<label class="mc-field"><span>2025 adjusted gross income over $150,000?</span><select id="eHi"><option value="0">No</option><option value="1">Yes ($75,000 if married filing separately)</option></select></label>
+<button class="mc-button" data-action="est">Calculate</button>
+<div class="mc-result tp-res" id="eR" aria-live="polite">Enter your income.</div></div><p class="tp-embed-foot">Free calculator by <a href="https://www.toolpinch.com/tools/quarterly-estimated-tax-calculator?utm_source=embed&amp;utm_medium=widget" target="_blank" rel="noopener">ToolPinch</a></p><script src="/js/money-clock.js"></script><script>(()=>{const D={"Y": {"single": [[[0, 0.1], [12400, 0.12], [50400, 0.22], [105700, 0.24], [201775, 0.32], [256225, 0.35], [640600, 0.37]], 16100], "married": [[[0, 0.1], [24800, 0.12], [100800, 0.22], [211400, 0.24], [403550, 0.32], [512450, 0.35], [768700, 0.37]], 32200], "hoh": [[[0, 0.1], [17700, 0.12], [67450, 0.22], [105700, 0.24], [201750, 0.32], [256200, 0.35], [640600, 0.37]], 24150]}, "K": {"wb": 184500, "qbi_t": {"single": 201750, "hoh": 201750, "married": 403500}, "qbi_r": {"single": 75000, "hoh": 75000, "married": 150000}, "am": {"single": 200000, "hoh": 200000, "married": 250000}, "ctc": 2200}},$=id=>document.getElementById(id),v=id=>Math.max(0,+$(id).value||0);const BT=(x,b)=>{let t=0;for(let i=0;i<b.length;i++){const lo=b[i][0],hi=i+1<b.length?b[i+1][0]:Infinity;if(x>lo)t+=(Math.min(x,hi)-lo)*b[i][1]}return t};
+const f=x=>x.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
+function run(){const st=$('eSt').value,j=st==='married',p=v('eP'),w=v('eW'),wh=v('eH'),o=v('eO'),paid=v('eA'),k=Math.round(v('eK')),K=D.K;
+const prRaw=$('eY').value.trim(),prior=prRaw===''?null:Math.max(0,+prRaw||0),hi=$('eHi').value==='1';
+const nese=p*.9235,room=Math.max(0,K.wb-w),se=nese>=400?.124*Math.min(nese,room)+.029*nese:0,addl=nese>=400?.009*Math.max(0,nese-Math.max(0,K.am[st]-w)):0,half=se/2;
+const agi=w+p+o-half,y=D.Y[st],ti0=Math.max(0,agi-y[1]);let qbi=Math.min(.2*Math.max(0,p-half),.2*ti0);const over=ti0-K.qbi_t[st];if(over>0)qbi*=Math.max(0,1-over/K.qbi_r[st]);
+const ti=Math.max(0,ti0-qbi),inc=BT(ti,y[0]),ctc=Math.max(0,k*K.ctc-50*Math.ceil(Math.max(0,agi-(j?400000:200000))/1000)),incA=Math.max(0,inc-ctc),tot=incA+se+addl;
+const req90=.9*tot,req=prior===null?req90:Math.min(req90,prior*(hi?1.1:1)),left=Math.max(0,req-wh-paid),still=Math.max(0,tot-wh-paid);
+let t='<p class="tp-big"><strong>'+f(left)+'</strong> to pay by January 15, 2027</p>';
+t+='<div class="tp-scroll"><table class="tp-table"><tbody><tr><td>Self-employment tax (Social Security and Medicare)</td><td class="n">'+f(se)+'</td></tr>'+(addl?'<tr><td>Additional Medicare tax (0.9%)</td><td class="n">'+f(addl)+'</td></tr>':'')+
+'<tr><td>Federal income tax'+(ctc?' after child tax credit':'')+'</td><td class="n">'+f(incA)+'</td></tr><tr class="tot"><td>Total 2026 federal tax</td><td class="n">'+f(tot)+'</td></tr>'+
+(wh?'<tr><td>Withheld from wages</td><td class="n">−'+f(wh)+'</td></tr>':'')+(paid?'<tr><td>Estimated payments already made</td><td class="n">−'+f(paid)+'</td></tr>':'')+
+'<tr><td>Still owed for 2026 if nothing else is paid</td><td class="n">'+f(still)+'</td></tr></tbody></table></div>';
+t+='<p>To avoid an underpayment penalty you need to have paid <b>'+f(req)+'</b> in total ('+(prior!==null&&req<req90?(hi?'110':'100')+'% of your 2025 tax, the safe harbor':'90% of your 2026 tax')+'). '+(left>0?'That leaves '+f(left)+' for the January 15 payment.':'Your withholding and payments already cover it.')+'</p>';
+if(left>0&&paid===0)t+='<p>If you made no estimated payments earlier in 2026, paying in January stops the penalty growing but a small charge may still apply for the April, June and September installments.</p>';if(tot-wh<1000)t+='<p>You expect to owe less than $1,000 after withholding, so no estimated tax penalty applies.</p>';
+t+='<p class="tp-note">Deductions used: standard deduction '+f(y[1])+', half of self-employment tax '+f(half)+', qualified business income deduction '+f(qbi)+'. Taxable income '+f(ti)+'. Starting 2027 fresh with similar income? That is about <b>'+f(Math.max(0,tot-wh)/4)+'</b> a quarter.</p>';
+$('eR').innerHTML=t}
+document.addEventListener('DOMContentLoaded',()=>{['eSt','eP','eW','eH','eO','eA','eK','eY','eHi'].forEach(i=>$(i).addEventListener('input',run));document.querySelectorAll('[data-action="est"]').forEach(b=>b.addEventListener('click',run));run()})})();</script><script>(()=>{const send=()=>{try{parent.postMessage({toolpinch:"resize",h:document.documentElement.scrollHeight},"*")}catch(e){}};new ResizeObserver(send).observe(document.body);addEventListener("load",send)})();</script></body></html>

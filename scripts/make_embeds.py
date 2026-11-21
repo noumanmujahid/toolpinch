@@ -2,7 +2,7 @@
 import re
 from tax_common import STYLE
 SLUGS = {'us-paycheck-calculator': 'US Paycheck Calculator', 'tax-refund-estimator': 'Tax Refund Estimator',
-         'holiday-pay-calculator': 'Holiday Pay Calculator'}
+         'holiday-pay-calculator': 'Holiday Pay Calculator', 'quarterly-estimated-tax-calculator': 'Quarterly Estimated Tax Calculator'}
 for slug, name in SLUGS.items():
     h = open(f'tools/{slug}.html', encoding='utf-8').read()
     i = h.index('<div class="mc-calculator">'); j = h.index('</div></section><article', i)
