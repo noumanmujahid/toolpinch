@@ -70,7 +70,7 @@ faqs = [("How do I calculate two discounts together?", "Multiply the remaining s
         ("Is a percentage coupon or a dollar coupon better?", "It depends on the price. A $20 coupon beats 10% off on items under $200; above $200, 10% off saves more."),
         ("How can I tell if a Black Friday deal is real?", "Compare against the price over the previous weeks, not the store's list price, and compare the final total including shipping and tax."),
         ("Does the order of discounts matter?", "For two percentage discounts, no: 30% then 10% gives the same result as 10% then 30%. A dollar coupon applied before a percentage discount saves less than one applied after.")]
-page('black-friday-deal-calculator', 'Black Friday Deal Calculator 2026: Stacked Discounts, Coupons and Tax | ToolPinch',
+page('black-friday-deal-calculator', 'Black Friday Deal Calculator 2026: Stacked Discounts',
      'Work out the real price of a Black Friday or Cyber Monday deal with stacked discounts, coupons, sales tax and shipping. Black Friday 2026 is November 27.',
      'Black Friday Deal Calculator', 'Black Friday: Nov 27, 2026 · Cyber Monday: Nov 30',
      'Combine a sale discount, an extra percentage off, a coupon, sales tax and shipping to see the real final price and the true discount.',
@@ -122,7 +122,7 @@ faqs = [("How do I calculate unit price?", "Divide the price by the quantity in 
         ("Is the bigger size always cheaper?", "No. Sales on smaller sizes and multi-buy offers can make smaller packs cheaper per unit, so compare the unit price each time."),
         ("How many ounces are in a pound?", "16 ounces (weight)."),
         ("Can I compare a weight with a volume?", "Not directly. Ounces of weight and fluid ounces of volume measure different things; compare products sold in the same kind of unit.")]
-page('unit-price-calculator', 'Unit Price Calculator: Compare Price per Ounce, Pound, Gram or Litre | ToolPinch',
+page('unit-price-calculator', 'Unit Price Calculator: Compare Price per Ounce | ToolPinch',
      'Compare up to three products by price per ounce, pound, gram, kilogram, fluid ounce, litre or item to find the best value. Converts units automatically.',
      'Unit Price Comparison Calculator', 'Smart shopping',
      'Compare package sizes and find which product is really cheaper per ounce, pound, gram, litre or item.',
@@ -182,7 +182,7 @@ faqs = [("How does pay in 4 work?", "You pay 25% at checkout and the rest in thr
         ("What does $600 over 12 months at 20% APR cost?", f"About ${amort(600,20,12):,.2f} a month, or ${amort(600,20,12)*12-600:,.2f} in total interest."),
         ("Does buy now, pay later affect my credit score?", "It can. Some providers report payment history to credit bureaus and some run credit checks for longer plans. Late payments can hurt your score."),
         ("What happens if I return something bought with buy now, pay later?", "The provider adjusts or cancels the plan once the merchant processes the refund. Keep making payments until then to avoid late fees.")]
-page('bnpl-calculator', 'Buy Now, Pay Later Calculator: Pay in 4 and Monthly Plan Costs | ToolPinch',
+page('bnpl-calculator', 'Buy Now, Pay Later Calculator: Pay in 4 Costs | ToolPinch',
      'See the real cost of buy now, pay later: pay-in-4 schedules, monthly installment interest at any APR, and how late fees add up.',
      'Buy Now, Pay Later Cost Calculator', 'Pay in 4 and monthly plans',
      'Work out your payment schedule, the interest on monthly plans and the cost of late fees before you split a purchase.',
@@ -230,7 +230,7 @@ faqs = [("What is a price adjustment?", "A refund of the difference when a store
         ("Do price adjustments apply to Black Friday prices?", "Often not. Many stores exclude doorbusters, limited-quantity and flash-sale prices from price adjustments. Check the policy."),
         ("What is the difference between price matching and a price adjustment?", "Price matching meets a competitor's lower price when you buy. A price adjustment refunds the difference when the same store lowers its own price after you buy."),
         ("What if the price adjustment window has passed?", "If the item is still within its return period, you can return it and buy it again at the lower price, if the store allows that.")]
-page('price-adjustment-calculator', 'Price Drop Refund Calculator: Price Adjustment Deadline and Amount | ToolPinch',
+page('price-adjustment-calculator', 'Price Drop Refund Calculator: Price Adjustment | ToolPinch',
      'Bought something and the price dropped? Calculate the refund you can ask for, including sales tax, and the last day of the store\'s price adjustment window.',
      'Price Drop Refund Calculator', 'Price adjustment and price match',
      'Find out how much you could get back if a price falls after you buy, and how many days are left to ask.',

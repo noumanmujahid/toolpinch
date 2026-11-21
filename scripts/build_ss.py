@@ -146,7 +146,7 @@ faqs = [
 ]
 
 url = 'https://www.toolpinch.com/tools/social-security-payment-schedule-2027'
-title = 'Social Security Payment Schedule 2027 + 3.6% COLA Calculator | ToolPinch'
+title = 'Social Security Payment Schedule 2027 + COLA Calculator'
 desc = 'Every 2027 Social Security and SSI payment date by birthday, the 3.6% COLA and your new benefit. Includes double SSI months and a calendar download.'
 h1 = 'Social Security Payment Schedule 2027'
 app = {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": h1, "description": desc, "url": url,

@@ -126,7 +126,7 @@ faqs = [
     ("What is my marginal tax rate?", "The rate of the highest bracket your taxable income reaches. It applies only to income in that bracket, not to all of your income."),
 ]
 
-page('2027-tax-brackets', '2027 Tax Brackets and Standard Deduction (IRS Official) + Calculator | ToolPinch',
+page('2027-tax-brackets', '2027 Tax Brackets and Standard Deduction (IRS) | ToolPinch',
      'Official 2027 federal tax brackets for single, married and head of household, the $16,600 standard deduction, and a calculator comparing your 2027 tax with 2026.',
      '2027 Federal Tax Brackets', 'IRS Rev. Proc. 2026-35 · Published Nov 5, 2026',
      'See the official 2027 income tax brackets and standard deduction, and calculate how much federal tax you will owe on 2027 income.',

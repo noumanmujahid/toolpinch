@@ -1,7 +1,7 @@
 {
-  "name": "ToolPinch Math, Work, Pay and Time Calculators",
+  "name": "ToolPinch Pay, Tax and Work-Hours Calculators",
   "short_name": "ToolPinch",
-  "description": "Browser-based calculators for everyday math, grades, statistics, geometry, work hours, pay, dates and time.",
+  "description": "Free calculators for take-home pay, tax, VAT, overtime, work hours, paydays, dates and everyday math.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

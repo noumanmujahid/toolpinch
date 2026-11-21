@@ -120,8 +120,8 @@ faqs = [
     ("Can I avoid tax on my bonus?", "You cannot avoid it entirely, but contributing part of it to a 401(k) in the US or a pension through salary sacrifice in the UK reduces the tax."),
 ]
 
-page('bonus-tax-calculator', 'Bonus Tax Calculator 2026: How Much of Your Bonus You Keep (US, UK, Pakistan) | ToolPinch',
-     'Calculate your bonus after tax: US 22% supplemental withholding plus FICA, UK income tax and National Insurance, and Pakistan salary slabs, with the real tax you will owe.',
+page('bonus-tax-calculator', 'Bonus Tax Calculator 2026: How Much Do You Keep? | ToolPinch',
+     'Calculate your bonus after tax: US 22% supplemental withholding plus FICA, UK tax and National Insurance, and Pakistan slabs, plus the tax you really owe.',
      'Bonus Tax Calculator', 'US 2026 · UK 2026/27 · Pakistan tax year 2027',
      'See how much of your bonus you will actually receive after tax, and whether US withholding is more or less than the tax you really owe.',
      ['US, UK and Pakistan', 'Withholding vs real tax', 'No signup'], calc, body, faqs, script)

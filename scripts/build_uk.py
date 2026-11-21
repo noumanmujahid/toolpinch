@@ -121,7 +121,7 @@ faqs = [
     ("When does the 2026/27 tax year run?", "From 6 April 2026 to 5 April 2027."),
 ]
 
-page('uk-take-home-pay-calculator', 'UK Take-Home Pay Calculator 2026/27: Salary After Tax and NI | ToolPinch',
+page('uk-take-home-pay-calculator', 'UK Take-Home Pay Calculator 2026/27 | ToolPinch',
      'Work out your 2026/27 UK take-home pay after income tax, National Insurance, pension and student loan. Includes Scottish tax bands and the £100k taper.',
      'UK Take-Home Pay Calculator 2026/27', 'Tax year 6 April 2026 to 5 April 2027',
      'See your salary after income tax, National Insurance, pension and student loan, per month, week or year, for England, Wales, Northern Ireland or Scotland.',

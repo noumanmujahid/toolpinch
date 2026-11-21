@@ -118,7 +118,7 @@ faqs = [
     ("When does the 2026–27 financial year run?", "From 1 July 2026 to 30 June 2027."),
 ]
 
-page('australia-take-home-pay-calculator', 'Australia Take-Home Pay Calculator 2026–27: Salary After Tax | ToolPinch',
+page('australia-take-home-pay-calculator', 'Australia Take-Home Pay Calculator 2026–27 | ToolPinch',
      'Work out your 2026–27 take-home pay in Australia after income tax at the new 15% rate, Medicare levy and HELP repayments, with employer super shown.',
      'Australia Take-Home Pay Calculator 2026–27', 'Financial year 1 July 2026 to 30 June 2027',
      'See your salary after income tax, the Medicare levy and HELP repayments, per fortnight, month or year, using the 2026–27 rates.',

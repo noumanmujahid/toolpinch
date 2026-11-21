@@ -228,7 +228,7 @@ faqs = [
     ("Why is my paycheck different from this estimate?", "Withholding depends on your W-4, pay frequency and benefits, and the calculator does not include tax credits, local taxes or state disability insurance. The estimate shows the tax for a full year at a steady salary."),
 ]
 
-page('us-paycheck-calculator', 'US Paycheck Calculator 2026: Take-Home Pay After Tax, All 50 States | ToolPinch',
+page('us-paycheck-calculator', 'US Paycheck Calculator 2026: All 50 States | ToolPinch',
      '2026 take-home pay after federal tax, Social Security, Medicare and state income tax for all 50 states and DC. Single, married and head of household.',
      'US Paycheck Calculator 2026', 'Updated for 2026 tax year',
      'See your take-home pay after federal income tax, Social Security, Medicare and state income tax for any state, per paycheck or per year.',

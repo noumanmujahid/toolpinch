@@ -121,7 +121,7 @@ faqs = [
 ]
 
 url = 'https://www.toolpinch.com/tools/emergency-supply-calculator'
-title = 'Emergency Supply Calculator: Food & Water for 3, 7 or 10 Days | ToolPinch'
+title = 'Emergency Supply Calculator: Food and Water | ToolPinch'
 desc = 'How much water and food to store for your household for 3, 7, 10 or 14 days, using US Ready.gov and German government guidance. Free printable checklist.'
 h1 = 'Emergency Food and Water Calculator'
 app = {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": h1, "description": desc, "url": url,

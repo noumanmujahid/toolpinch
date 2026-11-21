@@ -128,7 +128,7 @@ faqs = [("How do I estimate my tax refund?", "Work out your tax for the year (in
         ("Are tips tax-free in 2026?", "Up to $25,000 of qualified tips can be deducted from federal income tax for 2025 through 2028, with a phase-out above $150,000 of income ($300,000 joint)."),
         ("Why is my refund smaller this year?", "Common reasons are less withholding after a W-4 change, higher income, a child aging out of the child tax credit, or untaxed side income.")]
 
-page('tax-refund-estimator', 'Tax Refund Estimator 2026: How Much Will I Get Back in 2027? | ToolPinch',
+page('tax-refund-estimator', 'Tax Refund Estimator 2026: How Much Will I Get Back?',
      'Estimate your 2026 federal tax refund from your W-2: 2026 brackets, child tax credit, and the new no-tax-on-tips, overtime and senior deductions.',
      'Tax Refund Estimator 2026', 'Tax year 2026 · Returns filed in 2027',
      'Estimate your federal refund or balance due from your W-2 wages and withholding, including the child tax credit and the new tips, overtime and senior deductions.',

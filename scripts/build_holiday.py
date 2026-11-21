@@ -89,8 +89,8 @@ faqs = [("Is holiday pay required by law?", "Not under federal law. The Fair Lab
         ("Do part-time workers get holiday pay?", "Only if the employer's policy includes them. There is no federal requirement, and many employers limit paid holidays to full-time staff."),
         ("Do salaried employees get extra pay for working a holiday?", "Exempt salaried employees usually receive their normal salary regardless; extra pay or a substitute day off depends on company policy.")]
 
-page('holiday-pay-calculator', 'Holiday Pay Calculator: Thanksgiving, Christmas Time and a Half and Double Time | ToolPinch',
-     'Calculate holiday pay for Thanksgiving, Christmas and New Year with time and a half or double time, overtime over 40 hours, and paid holidays off. Includes state rules.',
+page('holiday-pay-calculator', 'Holiday Pay Calculator: Time and a Half, Double Time',
+     'Calculate holiday pay for Thanksgiving, Christmas and New Year at time and a half or double time, with overtime over 40 hours and state rules.',
      'Holiday Pay Calculator', 'Thanksgiving: Thu, Nov 26, 2026',
      'Work out your pay for a holiday week: holiday premium, overtime over 40 hours and paid holidays you take off.',
      ['Time and a half or double time', 'Overtime included', 'No signup'], calc, body, faqs, script)

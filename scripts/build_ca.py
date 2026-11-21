@@ -157,7 +157,7 @@ faqs = [
     ("Does an RRSP contribution reduce my tax?", "Yes. RRSP contributions are deducted from taxable income, so they save tax at your marginal rate. They do not reduce CPP or EI."),
 ]
 
-page('canada-take-home-pay-calculator', 'Canada Take-Home Pay Calculator 2026: Salary After Tax by Province | ToolPinch',
+page('canada-take-home-pay-calculator', 'Canada Take-Home Pay Calculator 2026 by Province',
      'Calculate 2026 take-home pay in every Canadian province and territory after federal tax, provincial tax, CPP and EI, with the new 14% federal rate.',
      'Canada Take-Home Pay Calculator 2026', 'Updated for 2026 tax year',
      'See your salary after federal and provincial income tax, CPP or QPP, and EI, for every province and territory.',

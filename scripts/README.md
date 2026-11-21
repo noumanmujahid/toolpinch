@@ -29,3 +29,4 @@ Run any of them from the repository root, for example:
 `expand_content.py` / `apply_expand.py` and `expand_dt.py` / `apply_dt.py` hold extra content added to math and date-time tools (the apply scripts skip pages that already have it).
 
 When a tax rate changes, edit the numbers in the matching script and run it again, rather than editing the HTML by hand; otherwise the next rebuild will overwrite the hand edit.
+| cleanup_offtopic.py | Nov 21 2026: removed 35 off-topic SEO, novelty and thin math pages and all links to them (already run; kept for the record) |

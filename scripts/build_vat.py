@@ -160,7 +160,7 @@ faqs = [
     ("What is the minimum VAT rate in the EU?", "EU law requires a standard rate of at least 15%. Member states can apply up to two reduced rates of at least 5% to listed goods and services, and some keep lower legacy rates."),
 ]
 
-page('vat-calculator', 'VAT Calculator: Add or Remove VAT, Rates for Every Country (2026) | ToolPinch',
+page('vat-calculator', 'VAT Calculator: Add or Remove VAT, Every Country | ToolPinch',
      f'Add or remove VAT or GST for {nc} countries. Standard and reduced 2026 rates for the UK, EU, India, UAE, Canada, Australia and more, with the formulas.',
      'VAT Calculator for Every Country', 'Updated November 2026',
      'Add VAT to a net price or remove it from a gross price, using the standard or reduced rate for any country.',
