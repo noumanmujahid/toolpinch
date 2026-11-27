@@ -36,3 +36,4 @@ When a tax rate changes, edit the numbers in the matching script and run it agai
 | build_payperiod_now.py | /tools/what-pay-period-is-it: federal pay period for any date, leave years 2026-2028 |
 | build_gs2027.py | /tools/gs-pay-scale-2027: 2026 GS base + 58 locality areas (verified vs OPM), 2027 raise status. UPDATE when the December 2026 pay executive order and OPM 2027 tables are published |
 | build_holidays_military_2027.py | /tools/federal-holidays-2027 and /tools/military-pay-dates-2027 (OPM, Federal Reserve K.8 and DFAS rules) |
+| build_paycheck2027.py | /tools/2027-paycheck-calculator: 2026 vs 2027 paycheck (IRS brackets, SSA wage base $192,300, 401(k) $25,500) |
