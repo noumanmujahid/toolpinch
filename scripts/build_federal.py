@@ -143,6 +143,8 @@ Monday, January 4 (pay period 25 of 2026) and the last is Monday, December 20 (p
 <li><strong>Use-or-lose deadline:</strong> schedule excess annual leave in writing by Saturday, November 27, 2027 (end of pay period 23).</li>
 <li><strong>Holiday-shifted deposits:</strong> January 19, February 16, July 6 and October 12, 2027, and January 18, 2028.</li></ul></section>
 
+<p>Need today's pay period? Use <a href="/tools/what-pay-period-is-it">What pay period is it?</a> For 2027 salaries, see the <a href="/tools/gs-pay-scale-2027">GS pay scale 2027</a>.</p>
+
 <section><h2>NFC pay period calendar 2027 (all 26 pay periods)</h2>
 <p>Every pay period is 14 days, from Sunday to the Saturday two weeks later. Pay dates are for agencies paid by NFC; other payroll providers are listed below.</p>
 <div class="tp-scroll"><table class="tp-table"><thead><tr><th>PP</th><th>Pay period</th><th>NFC deposit</th><th>Official pay date</th><th>Notes</th></tr></thead><tbody>{rows}</tbody></table></div>
@@ -177,7 +179,7 @@ NFC pay dates follow the NFC pay schedule (<a href="https://www.nfc.usda.gov/Pub
 Some agencies and part-time or seasonal schedules differ, so confirm with your payroll office before planning around a specific date.</p></section>
 
 <nav class="mc-related-links" aria-label="Related tools"><h2>Related calculators</h2>
-<a href="/tools/social-security-payment-schedule-2027">Social Security Payment Schedule 2027</a><a href="/tools/payday-calendar-2027">2027 Payday Calendar</a><a href="/tools/long-weekends-2027">Long Weekends 2027</a>
+<a href="/tools/what-pay-period-is-it">What pay period is it?</a><a href="/tools/gs-pay-scale-2027">GS pay scale 2027</a><a href="/tools/social-security-payment-schedule-2027">Social Security Payment Schedule 2027</a><a href="/tools/payday-calendar-2027">2027 Payday Calendar</a><a href="/tools/long-weekends-2027">Long Weekends 2027</a>
 <a href="/tools/working-days-2027">Working Days in 2027</a><a href="/tools/pay-period-converter">Pay Period Converter</a>
 <a href="/pay-calculators">All pay calculators</a></nav>"""
 
