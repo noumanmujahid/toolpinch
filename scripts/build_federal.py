@@ -75,6 +75,9 @@ three = [m for m, v in months.items() if len(v) >= 3]
 two_pay_months = ', '.join(D(2027, m, 1).strftime('%B') for m, v in months.items() if len(v) == 3)
 print('3-deposit months', three)
 
+MN = ['January','February','March','April','May','June','July','August','September','October','November','December']
+by_month = ''.join(f'<tr><td>{MN[m-1]}</td><td>' + ', '.join(f'{f(dep)} <span class="tp-note">({lab})</span>' for lab, dep, off in cal2027 if dep.month == m) + '</td></tr>' for m in range(1, 13))
+last = cal2027[-1]
 data = json.dumps([{'n': n, 's': s.isoformat(), 'e': e.isoformat(), 'd': dep.isoformat(), 'o': off.isoformat()} for n, s, e, dep, off in periods])
 
 STYLE = """<style>
@@ -133,10 +136,24 @@ body = f"""
 Monday, January 4 (pay period 25 of 2026) and the last is Monday, December 20 (pay period 24 of 2027).
 {('Months with three deposits: ' + two_pay_months + '.') if two_pay_months else 'No month has three NFC deposits in 2027.'}</p></header>
 
-<section><h2>2027 federal pay period calendar</h2>
+<section><h2>OPM federal pay period schedule 2027: leave year and pay dates</h2>
+<ul><li><strong>Leave year 2027:</strong> Sunday, January 10, 2027 to Saturday, January 8, 2028 (26 pay periods).</li>
+<li><strong>Pay period 1:</strong> January 10 to 23, 2027, paid by NFC on Monday, February 1.</li>
+<li><strong>NFC paydays in calendar 2027:</strong> 26, from {f(first[1])} to {f(last[1])}.</li>
+<li><strong>Use-or-lose deadline:</strong> schedule excess annual leave in writing by Saturday, November 27, 2027 (end of pay period 23).</li>
+<li><strong>Holiday-shifted deposits:</strong> January 19, February 16, July 6 and October 12, 2027, and January 18, 2028.</li></ul></section>
+
+<section><h2>NFC pay period calendar 2027 (all 26 pay periods)</h2>
 <p>Every pay period is 14 days, from Sunday to the Saturday two weeks later. Pay dates are for agencies paid by NFC; other payroll providers are listed below.</p>
 <div class="tp-scroll"><table class="tp-table"><thead><tr><th>PP</th><th>Pay period</th><th>NFC deposit</th><th>Official pay date</th><th>Notes</th></tr></thead><tbody>{rows}</tbody></table></div>
 <p class="tp-note">Deposits are usually available on the deposit date; the official pay date is the Thursday that week. Some banks post funds a day or two earlier.</p></section>
+
+<section><h2>NFC paydays 2027 by month</h2>
+<p>Every NFC deposit that lands in calendar year 2027, including the two January paydays for pay periods 25 and 26 of leave year 2026.</p>
+<div class="tp-scroll"><table class="tp-table"><thead><tr><th>Month</th><th>NFC deposit dates</th></tr></thead><tbody>{by_month}</tbody></table></div></section>
+
+<section><h2>Where to check your pay dates in NFC EPP</h2>
+<p>NFC-paid employees can see each earnings and leave statement in the NFC <strong>Employee Personal Page (EPP)</strong> once a pay period is processed. The statement shows the pay period number, pay date, net pay and leave balances, so you can confirm the dates on this page against your own records. Your agency's payroll or HR office can answer questions about a specific deposit.</p></section>
 
 <section><h2>How federal pay dates work</h2>
 <div class="mc-example-grid">
@@ -160,11 +177,15 @@ NFC pay dates follow the NFC pay schedule (<a href="https://www.nfc.usda.gov/Pub
 Some agencies and part-time or seasonal schedules differ, so confirm with your payroll office before planning around a specific date.</p></section>
 
 <nav class="mc-related-links" aria-label="Related tools"><h2>Related calculators</h2>
-<a href="/tools/payday-calendar-2027">2027 Payday Calendar</a><a href="/tools/long-weekends-2027">Long Weekends 2027</a>
+<a href="/tools/social-security-payment-schedule-2027">Social Security Payment Schedule 2027</a><a href="/tools/payday-calendar-2027">2027 Payday Calendar</a><a href="/tools/long-weekends-2027">Long Weekends 2027</a>
 <a href="/tools/working-days-2027">Working Days in 2027</a><a href="/tools/pay-period-converter">Pay Period Converter</a>
 <a href="/pay-calculators">All pay calculators</a></nav>"""
 
 faqs = [
+    ("What is the NFC pay period calendar for 2027?",
+     "NFC uses 26 biweekly pay periods in 2027. Pay period 1 runs January 10 to 23, 2027 and is paid on Monday, February 1; pay period 26 runs December 26, 2027 to January 8, 2028 and is paid on Tuesday, January 18, 2028. The full table with every deposit date is above."),
+    ("Where can I see my NFC pay dates?",
+     "In the NFC Employee Personal Page (EPP), which shows each earnings and leave statement with its pay period and pay date. This page lists the expected 2027 dates in advance."),
     ("How many pay periods are in 2027 for federal employees?",
      "26. Leave year 2027 runs from Sunday, January 10, 2027 to Saturday, January 8, 2028, which is 26 biweekly pay periods."),
     ("When does pay period 1 of 2027 start?",
@@ -184,9 +205,9 @@ faqs = [
 ]
 
 url = 'https://www.toolpinch.com/tools/federal-pay-periods-2027'
-title = '2027 Federal Pay Period Calendar & Paydays (NFC) | ToolPinch'
-desc = 'All 26 federal pay periods for 2027 with NFC pay dates, leave year dates, the Nov 27 use-or-lose deadline and a leave calculator. Free .ics and CSV download.'
-h1 = '2027 Federal Pay Period Calendar'
+title = 'NFC Pay Period Calendar 2027 & Federal Paydays | ToolPinch'
+desc = 'NFC pay period calendar 2027: all 26 federal pay periods with deposit and official pay dates, the OPM leave year, use-or-lose deadline and a free .ics download.'
+h1 = 'NFC Pay Period Calendar 2027'
 app = {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": h1, "description": desc, "url": url,
        "applicationCategory": "FinanceApplication", "operatingSystem": "Any modern web browser", "isAccessibleForFree": True,
        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "author": {"@type": "Organization", "name": "ToolPinch", "url": "https://www.toolpinch.com"}}
@@ -203,8 +224,8 @@ html = ('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="
         f'{head_shared}<meta name="twitter:card" content="summary_large_image">'
         + ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in (app, faq, crumbs))
         + f'{STYLE}</head><body>{header}<main id="main-content" class="mc-main"><section class="mc-tool-hero"><div class="mc-wrap mc-tool-grid"><div>'
-        f'<a class="mc-back" href="/pay-calculators">Pay calculators</a><p class="mc-kicker">Updated for 2027</p><h1>{h1}</h1>'
-        '<p>All 26 pay periods for leave year 2027 with NFC pay dates. Look up any date, check your use-or-lose leave, and add every payday to your calendar.</p>'
+        f'<a class="mc-back" href="/pay-calculators">Pay calculators</a><p class="mc-kicker">2027 federal pay periods</p><h1>{h1}</h1>'
+        '<p>The 2027 federal pay period calendar: all 26 pay periods for leave year 2027 with NFC pay dates. Look up any date, check your use-or-lose leave, and add every payday to your calendar.</p>'
         '<div class="mc-trust"><span>No signup</span><span>OPM and NFC rules</span><span>Calendar export</span></div></div>'
         f'{calc}</div></section><article class="mc-wrap mc-depth mc-tool-content">{body}'
         '<section class="mc-faq"><h2>Frequently asked questions</h2>' + ''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in faqs)
