@@ -10,7 +10,7 @@ for slug, name in SLUGS.items():
     k = h.index('<script src="/js/money-clock.js"></script>') + len('<script src="/js/money-clock.js"></script>')
     script = h[k:h.index('</body>')]
     links = re.search(r'<link rel="stylesheet"[^>]*>(?:<link rel="stylesheet"[^>]*>)*', h)
-    css = links.group(0) if links else '<link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/v2.css"><link rel="stylesheet" href="/css/money-clock.css?v=31">'
+    css = links.group(0) if links else '<link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/v2.css"><link rel="stylesheet" href="/css/money-clock.css?v=32">'
     out = ('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
            f'<meta name="robots" content="noindex,follow"><title>{name} widget | ToolPinch</title><link rel="canonical" href="https://www.toolpinch.com/tools/{slug}">'
            f'{css}{STYLE}<style>html,body{{background:transparent;margin:0}}body{{padding:8px}}.mc-calculator{{margin:0;max-width:none;box-shadow:none}}'
